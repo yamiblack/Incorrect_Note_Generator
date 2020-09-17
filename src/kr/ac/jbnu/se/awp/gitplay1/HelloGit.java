@@ -7,5 +7,6 @@ public class HelloGit {
 		System.out.println("Hello JinSan");
 		System.out.println("Hello JiWoong");
 		System.out.println("Hello Jaewook");
+		System.out.println("Hello YeoungHwan");
 	}
 }

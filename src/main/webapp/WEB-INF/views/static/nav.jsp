@@ -56,7 +56,7 @@
                      <li class="menu"><a href="">문제 리스트</a>                        
                   </ul></li>
                <li class="menu"><a href="">테스트</a>                  
-               <li class="menu"><a href="">플래너</a>   
+               <li class="menu"><a href="${pageContext.request.contextPath}/schedule/schedule">플래너</a>   
             </ul>
          </nav>
          <!-- #nav-menu-container -->

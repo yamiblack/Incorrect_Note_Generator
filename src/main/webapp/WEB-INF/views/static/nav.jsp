@@ -51,29 +51,12 @@
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-has-children"><a href="">오답노트</a>
-						<ul>
-							<li class="menu-has-children"><a
-								href="template/problem/problemRegist">오답노트 작성</a>
-								<ul>
-									<li><a href="">객관식</a></li>
-									<li><a href="">주관식</a></li>
-								</ul></li>
-							<li class="menu"><a href="template/category/category">카테고리</a>
-							<li class="menu"><a href="">테스트</a>								
-						</ul></li>
-					<li class="menu-has-children"><a href="">게시판</a>
-						<ul>
-							<li><a href="#">공지사항</a></li>
-							<li><a href="#">자유게시판</a></li>
-							<li><a href="#">정보게시판</a></li>
-						</ul></li>
-					<li class="menu"><a href="">스터디 그룹</a>						
-					<li class="menu"><a href="">학습현황</a>						
-					<li class="menu-has-children"><a href="">플래너</a>
 						<ul>							
-							<li><a href="#">플래너</a></li>
-							<li><a href="#">디데이</a></li>
-						</ul></li>										
+							<li class="menu"><a href="template/category/category">문제 등록</a>
+							<li class="menu"><a href="">문제 리스트</a>								
+						</ul></li>
+					<li class="menu"><a href="">테스트</a>						
+					<li class="menu"><a href="">플래너</a>	
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->

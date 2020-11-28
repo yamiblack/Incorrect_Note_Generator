@@ -83,4 +83,14 @@ public class HomeController {
 	public String testPage(Model model) {
 		return "/template/problem/testPage";
 	}
+	
+	@RequestMapping(value = "/schedule/schedule", method = RequestMethod.GET)
+	public String calendarPage(Model model) {
+		return "/schedule/schedule";
+	}
+	
+	@RequestMapping(value = "/schedule/schedulePopup", method = RequestMethod.GET)
+	public String calendarPopupPage(Model model) {
+		return "/schedule/schedulePopup";
+	}
 }

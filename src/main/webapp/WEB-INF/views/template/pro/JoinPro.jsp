@@ -91,7 +91,7 @@
         </table>
         
         <br>
-        <input type="button" value="확인">
+        <input type="button" value="확인" onclick="location='${pageContext.request.contextPath}/main'"/>
     </div>
 </body>
 </html>

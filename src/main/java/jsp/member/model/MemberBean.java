@@ -1,12 +1,29 @@
 package jsp.member.model;
  
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
  
  
 // 데이터의 전달을 담당하는 클래스 - DTO
 public class MemberBean 
 {
-    private String id;            // 아이디
+	
+    public MemberBean(String password, String name, String gender, String birthyy, String birthmm, String birthdd,
+			String mail1, String mail2, String phone, String address) {
+		this.password = password;
+		this.name = name;
+		this.gender = gender;
+		this.birthyy = birthyy;
+		this.birthmm = birthmm;
+		this.birthdd = birthdd;
+		this.mail1 = mail1;
+		this.mail2 = mail2;
+		this.phone = phone;
+		this.address = address;
+	
+	}
+	private String id;            // 아이디
     private String password;     // 비밀번호
     private String name;        // 이름
     private String gender;        // 성별
@@ -17,7 +34,6 @@ public class MemberBean
     private String mail2;        // 이메일 - @ 뒷부분
     private String phone;        // 전화
     private String address;        // 주소
-    private Timestamp reg;        // 가입일
     
     public String getId() {return id;}
     public void setId(String id) {this.id = id;}
@@ -48,7 +64,5 @@ public class MemberBean
     
     public String getAddress() {return address;}
     public void setAddress(String address) {this.address = address;}
-    
-    public Timestamp getReg() {return reg;}
-    public void setReg(Timestamp reg) {this.reg = reg;}
+   
 }

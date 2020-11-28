@@ -48,7 +48,7 @@
 <body>
 <jsp:include page="../../static/nav.jsp"></jsp:include>
     <div id="wrap">
-        <form name="loginInfo" method="post" action="../pro/LoginPro.jsp" 
+        <form name="loginInfo" method="post" action="/pro/LoginPro" 
                 onsubmit="return checkValue()">
         
             <!-- 이미지 추가 -->

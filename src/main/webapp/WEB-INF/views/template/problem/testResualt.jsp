@@ -120,8 +120,6 @@ ul {
    %>
       <!-- 각자 제작한 것 추가해주세요 -->
       <div class="container">
-         
-
             <div class="test">
                <ul>
                   <%

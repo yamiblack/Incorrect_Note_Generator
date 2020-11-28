@@ -45,7 +45,7 @@ public class HomeController {
 	public String categoryProblem(Model model) {
 		return "/template/category/categoryProblem";
 	}
-
+	
 	@RequestMapping(value = "/template/category/categoryProblemChoose", method = RequestMethod.GET)
 	public String categoryProblemChoose(Model model) {
 		return "/template/category/categoryProblemChoose";
@@ -131,5 +131,10 @@ public class HomeController {
 	   @RequestMapping(value = "/template/pro/JoinPro", method = RequestMethod.GET)
 	   public String JoinPro(Model model) {
 	      return "/template/pro/JoinPro";
+	   }
+	   
+	   @RequestMapping(value = "/template/pro/LoginPro", method = RequestMethod.GET)
+	   public String LoginPro(Model model) {
+	      return "/template/pro/LoginPro";
 	   }
 }

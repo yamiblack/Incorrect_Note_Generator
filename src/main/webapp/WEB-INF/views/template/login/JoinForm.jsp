@@ -50,7 +50,7 @@
         
         <!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
         <!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 JoinPro.jsp -->
-        <form method="post" action="../pro/JoinPro" name="userInfo" 
+        <form method="post" action="/pro/JoinPro" name="userInfo" 
                 onsubmit="return checkValue()">
             <table>
                 <tr>

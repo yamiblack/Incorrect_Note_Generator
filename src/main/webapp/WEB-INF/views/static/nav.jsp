@@ -60,7 +60,7 @@
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->
-d
+
 			<nav class="nav social-nav pull-right d-none d-lg-inline">
 				<a href="#">로그인</a> 
 		</div>

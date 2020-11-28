@@ -13,8 +13,8 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="resources/img/favicon.png" rel="icon">
-<link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="${pageContext.request.contextPath}/resources/img/favicon.png" rel="icon">
+<link href="${pageContext.request.contextPath}/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
 <link
@@ -22,14 +22,14 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="resources/vendor/venobox/venobox.css" rel="stylesheet">
-<link href="resources/vendor/font-awesome/css/font-awesome.min.css"
+<link href="${pageContext.request.contextPath}/resources/vendor/venobox/venobox.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="resources/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
 
 <!-- bootstrap icon -->
 
@@ -43,7 +43,7 @@
 		<div class="container">
 
 			<div id="logo" class="pull-left">
-				<a href=""><img src="resources/img/logo-nav.png" alt=""></a>
+				<a href=""><img src="${pageContext.request.contextPath}/resources/img/logo-nav.png" alt=""></a>
 				<!-- Uncomment below if you prefer to use a text image -->
 				<!--<h1><a href="#hero">Bell</a></h1>-->
 			</div>
@@ -70,21 +70,21 @@
 	<a class="scrolltop" href="#"><span class="fa fa-angle-up"></span></a>
 
 	<!-- Vendor JS Files -->
-	<script src="resources/vendor/jquery/jquery.min.js"></script>
-	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-	<script src="resources/vendor/php-email-form/validate.js"></script>
-	<script src="resources/vendor/counterup/counterup.min.js"></script>
-	<script src="resources/vendor/tether/js/tether.min.js"></script>
-	<script src="resources/vendor/jquery-sticky/jquery.sticky.js"></script>
-	<script src="resources/vendor/venobox/venobox.min.js"></script>
-	<script src="resources/vendor/lockfixed/jquery.lockfixed.min.js"></script>
-	<script src="resources/vendor/waypoints/jquery.waypoints.min.js"></script>
-	<script src="resources/vendor/superfish/superfish.min.js"></script>
-	<script src="resources/vendor/hoverIntent/hoverIntent.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/counterup/counterup.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/tether/js/tether.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/jquery-sticky/jquery.sticky.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/venobox/venobox.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/lockfixed/jquery.lockfixed.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/waypoints/jquery.waypoints.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/superfish/superfish.min.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/hoverIntent/hoverIntent.js"></script>
 
 	<!-- Template Main JS File -->
-	<script src="resources/js/main.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 
 </body>
 

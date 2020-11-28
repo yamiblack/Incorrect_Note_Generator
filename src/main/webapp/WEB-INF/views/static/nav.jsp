@@ -13,8 +13,8 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="${pageContext.request.contextPath}/resources/img/favicon.png" rel="icon">
-<link href="${pageContext.request.contextPath}/resources/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="resources/img/favicon.png" rel="icon">
+<link href="resources/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
 <link
@@ -22,14 +22,14 @@
 	rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="${pageContext.request.contextPath}/resources/vendor/bootstrap/css/bootstrap.min.css"
+<link href="resources/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/vendor/venobox/venobox.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/vendor/font-awesome/css/font-awesome.min.css"
+<link href="resources/vendor/venobox/venobox.css" rel="stylesheet">
+<link href="resources/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="${pageContext.request.contextPath}/resources/css/style.css" rel="stylesheet">
+<link href="resources/css/style.css" rel="stylesheet">
 
 <!-- bootstrap icon -->
 
@@ -43,7 +43,7 @@
 		<div class="container">
 
 			<div id="logo" class="pull-left">
-				<a href=""><img src="${pageContext.request.contextPath}/resources/img/logo-nav.png" alt=""></a>
+				<a href=""><img src="resources/img/logo-nav.png" alt=""></a>
 				<!-- Uncomment below if you prefer to use a text image -->
 				<!--<h1><a href="#hero">Bell</a></h1>-->
 			</div>
@@ -51,12 +51,29 @@
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-has-children"><a href="">오답노트</a>
-						<ul>							
-							<li class="menu"><a href="template/category/category">문제 등록</a>
-							<li class="menu"><a href="">문제 리스트</a>								
+						<ul>
+							<li class="menu-has-children"><a
+								href="template/problem/problemRegist">오답노트 작성</a>
+								<ul>
+									<li><a href="">객관식</a></li>
+									<li><a href="">주관식</a></li>
+								</ul></li>
+							<li class="menu"><a href="template/category/category">카테고리</a>
+							<li class="menu"><a href="">테스트</a>								
 						</ul></li>
-					<li class="menu"><a href="">테스트</a>						
-					<li class="menu"><a href="">플래너</a>	
+					<li class="menu-has-children"><a href="">게시판</a>
+						<ul>
+							<li><a href="#">공지사항</a></li>
+							<li><a href="#">자유게시판</a></li>
+							<li><a href="#">정보게시판</a></li>
+						</ul></li>
+					<li class="menu"><a href="">스터디 그룹</a>						
+					<li class="menu"><a href="">학습현황</a>						
+					<li class="menu-has-children"><a href="">플래너</a>
+						<ul>							
+							<li><a href="#">플래너</a></li>
+							<li><a href="#">디데이</a></li>
+						</ul></li>										
 				</ul>
 			</nav>
 			<!-- #nav-menu-container -->
@@ -70,21 +87,21 @@
 	<a class="scrolltop" href="#"><span class="fa fa-angle-up"></span></a>
 
 	<!-- Vendor JS Files -->
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery.easing/jquery.easing.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/php-email-form/validate.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/counterup/counterup.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/tether/js/tether.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/jquery-sticky/jquery.sticky.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/venobox/venobox.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/lockfixed/jquery.lockfixed.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/waypoints/jquery.waypoints.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/superfish/superfish.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/hoverIntent/hoverIntent.js"></script>
+	<script src="resources/vendor/jquery/jquery.min.js"></script>
+	<script src="resources/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/vendor/jquery.easing/jquery.easing.min.js"></script>
+	<script src="resources/vendor/php-email-form/validate.js"></script>
+	<script src="resources/vendor/counterup/counterup.min.js"></script>
+	<script src="resources/vendor/tether/js/tether.min.js"></script>
+	<script src="resources/vendor/jquery-sticky/jquery.sticky.js"></script>
+	<script src="resources/vendor/venobox/venobox.min.js"></script>
+	<script src="resources/vendor/lockfixed/jquery.lockfixed.min.js"></script>
+	<script src="resources/vendor/waypoints/jquery.waypoints.min.js"></script>
+	<script src="resources/vendor/superfish/superfish.min.js"></script>
+	<script src="resources/vendor/hoverIntent/hoverIntent.js"></script>
 
 	<!-- Template Main JS File -->
-	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+	<script src="resources/js/main.js"></script>
 
 </body>
 

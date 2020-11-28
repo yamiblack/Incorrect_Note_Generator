@@ -46,9 +46,9 @@
 			<div class="container">
 
 				<div class="d-flex justify-content-between align-items-center">
-					<h2>문제 풀기</h2>
+					<h1>리스트</h1>
 					<ol>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="">Home</a></li>
 						<li>오답노트</li>
 					</ol>
 				</div>
@@ -78,7 +78,7 @@
 						<tr>
 							<th scope="col text-center ml-2 ">No.</th>
 							<th scope="col text-center ml-6 ">제목</th>
-							<th scope="col text-center ml-4 ">학습률</th>
+							<th scope="col text-center ml-4 ">등록 날짜</th>
 						</tr>
 					</thead>
 					<tbody>

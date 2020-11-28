@@ -45,7 +45,7 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-md-12">
-					<a class="hero-brand" href="index.html" title="Home"><img
+					<a class="hero-brand" href="" title="Home"><img
 						alt="Ing Logo" src="${pageContext.request.contextPath}/resources/img/logo.png"></a>
 				</div>
 			</div>

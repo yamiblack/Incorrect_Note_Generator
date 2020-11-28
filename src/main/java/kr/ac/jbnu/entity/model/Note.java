@@ -1,5 +1,8 @@
 package kr.ac.jbnu.entity.model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,12 +28,16 @@ public class Note {
 		this.answer = answer;
 		this.mywrong = mywrong;
 		this.description = description;
+		
+		SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy.MM.dd");
+		String now = dataFormat.format(new Date());
+		this.date = now;
 	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column
-	private Integer id;
+	private long id;
 	
 	@Column(name = "name")
 	private String name;
@@ -71,11 +78,11 @@ public class Note {
 	@Column(name = "date")
 	private String date;
 	
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

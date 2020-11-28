@@ -67,7 +67,8 @@
 						</tr>
 					</tbody>
 				</table>
-				<button class="btn btn-small" type="submit">추가</button>
+				<!-- <button class="btn btn-small" type="submit">추가</button> -->
+				<input class ="btn btn-small" onclick="add_note();" type="button" value="추가"/>
 				<button class="btn btn-small" type="submit">삭제</button>
 			</div>
 		</div>
@@ -86,6 +87,22 @@
 			//formname에 사용자가 지정한 form의 name입력 
 		} 
 	}
+	</script>
+	
+<!-- 	<input onclick="popup();" type="button" value="팝업"/>
+	<script>
+	
+	function popup(){
+		window.open("main", "a", "width=1000, height=1000, toolbar=1000,toolbar=no,status=no,location=no,scrollbars=yes,menubar=no,resizable=yes,left=50,right=50")
+	}
+	
+	</script> -->
+	
+	<script>
+		function add_note(){
+			
+			Note note = new Note("고웹 1번", "5", "고웹", "이 문제의 정답은!?", "일번", "이번", "삼번", "사번", "오번", "3번", "2번", "3번이 답이다 똥멍청아.");
+		}
 	</script>
 
 </body>

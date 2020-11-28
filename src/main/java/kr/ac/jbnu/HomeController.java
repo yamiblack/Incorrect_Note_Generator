@@ -109,7 +109,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/list/select", method = RequestMethod.GET)
-	public String selectPage(Model model) {
+	public String select(Model model) {
 		return "/list/select";
 	}
 	

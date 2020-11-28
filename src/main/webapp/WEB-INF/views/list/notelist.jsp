@@ -78,7 +78,7 @@
 						while(rs.next()){
 							%><tr>
 							<td><%=rs.getString("id")%></td>
-							<td><%=rs.getString("content")%></td>
+							<td><a href="${pageContext.request.contextPath}/template/problem/showProblem"> <%=rs.getString("content")%> </a></td>
 							<td><%=rs.getString("date")%></td>
 						<% }
 						
@@ -92,17 +92,12 @@
 					}
 
 					%>
-						<tr>
-							<th scope="row">1</th>
-							<td><a href="http://www.naver.com"/>데이터 통신</a></td>
-							<td>2020.11.28</td>
-						</tr>
 					</tbody>
 				</table>
 				<!-- <button class="btn btn-small" type="submit">추가</button> -->
 				
 				<button class="btn btn-small" onclick= "location.href='${pageContext.request.contextPath}/template/problem/problemRegist'" type="submit">추가</button>
-				<button class="btn btn-small" type="submit">삭제</button>
+				<button class="btn btn-small" onclick= "location.href='${pageContext.request.contextPath}/list/select'" type="submit">삭제</button>
 			</div>
 		</div>
 		

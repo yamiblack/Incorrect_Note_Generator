@@ -144,6 +144,9 @@
             <input type="button" value="Ãë¼Ò" onclick="location='${pageContext.request.contextPath}/template/login/LoginForm'"/>
         </form>
     </div>
+    		<!-- Template Main JS File -->
+	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
+    
 <jsp:include page="../../static/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"
+    import= "kr.ac.jbnu.entity.model.*"
+    import= "kr.ac.jbnu.entity.dao.NoteDao"
+    import= "java.util.List"
+    import= "java.sql.Connection"
+    import= "java.sql.ResultSet"
+    import= "java.sql.Statement"
+    import= "java.sql.DriverManager"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,18 +60,36 @@
 						</tr>
 					</thead>
 					<tbody>
-					
-	<%-- 				<%
-						for(){{
-							
-						}
-					%> --%>
-					
-						<tr>
-							<th scope="row"><input type='checkbox' name='selectForTest' value='selected' /></th>
-							<td><a href="http://www.naver.com"/>데이터 통신</a></td>
-							<td>2020.11.28</td>
-						</tr>
+										<%
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						
+						Connection conn = null;
+						Statement stmt = null;
+						ResultSet rs = null;
+						
+						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+						stmt = conn.createStatement();
+						
+						rs = stmt.executeQuery("select * from note;");
+						
+						while(rs.next()){
+							%><tr>
+							<td><input type='checkbox' name='selectForTest' value='selected' /></td>
+							<td><a href="${pageContext.request.contextPath}/template/problem/showProblem"> <%=rs.getString("content")%> </a></td>
+							<td><%=rs.getString("date")%></td>
+						<% }
+						
+						rs.close();
+						stmt.close();
+						conn.close();
+
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					%>
 					</tbody>
 				</table>
 				<button class="btn btn-small" type="submit">선택 완료</button>

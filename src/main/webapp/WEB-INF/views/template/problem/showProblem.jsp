@@ -154,10 +154,7 @@ h5 {
 			<!-- 뒤로, 등록 버튼 -->
 			<div class="d-flex justify-content-between" style="margine: 3px;">
 				<div class="form-row float-left">
-					<button class="btn btn-small" id="advanced-set-submit">뒤로</button>
-				</div>
-				<div class="form-row float-right">
-					<button class="btn btn-small" id="advanced-set-submit">등록</button>
+					<a class="btn btn-small" href="${pageContext.request.contextPath}/list/notelist">뒤로</a>
 				</div>
 			</div>
 		</div>

@@ -16,7 +16,7 @@
 			<div class="container">
 
 				<div class="d-flex justify-content-between align-items-center">
-				<h3>리스트</h3>
+				<h2>오답노트</h2>
 					<ol>
 						<li><a href="main">Home</a></li>
 						<li>오답노트</li>

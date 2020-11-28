@@ -16,7 +16,7 @@
 			<div class="container">
 
 				<div class="d-flex justify-content-between align-items-center">
-				<h3>문제 선택</h3>
+				<h2>문제 선택</h2>
 					<ol>
 						<li><a href="main">Home</a></li>
 						<li>테스트</li>
@@ -47,7 +47,7 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th scope="col text-center ml-2 ">No.</th>
+							<th scope="col text-center ml-2 "> <input type='checkbox' name='selectForTest' value='selected' /></th>
 							<th scope="col text-center ml-6 ">제목</th>
 							<th scope="col text-center ml-4 ">등록 날짜</th>
 						</tr>
@@ -61,14 +61,13 @@
 					%> --%>
 					
 						<tr>
-							<th scope="row">1</th>
+							<th scope="row"><input type='checkbox' name='selectForTest' value='selected' /></th>
 							<td><a href="http://www.naver.com"/>데이터 통신</a></td>
 							<td>2020.11.28</td>
 						</tr>
 					</tbody>
 				</table>
-				<button class="btn btn-small" type="submit">추가</button>
-				<button class="btn btn-small" type="submit">삭제</button>
+				<button class="btn btn-small" type="submit">선택 완료</button>
 			</div>
 		</div>
 		

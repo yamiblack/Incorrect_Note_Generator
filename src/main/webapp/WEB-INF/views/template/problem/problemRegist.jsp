@@ -170,7 +170,7 @@ h3 {
 				<div class="form-group">
 					<label for="formGroupExampleInput">문제</label> <input type="text"
 						class="form-control" id="formGroupExampleInput"
-						placeholder="문제를 입력해주세요." required>
+						placeholder="문제를 입력해 주세요." required>
 				</div>
 				<!-- 사진 추가 -->
 				<!-- <div class="form-group">
@@ -252,7 +252,7 @@ h3 {
 					<div class="answer">
 						<label for="formGroupExampleInput">정답</label> <input type="text"
 							class="form-control" id="formGroupExampleInput"
-							placeholder="정답을 입력해주세요." required>
+							placeholder="정답을 입력해 주세요." required>
 					</div>
 				</div>
 
@@ -261,7 +261,7 @@ h3 {
 					<div class="wronganswer">
 						<label for="formGroupExampleInput">작성했던 오답</label> <input
 							type="text" class="form-control" id="formGroupExampleInput"
-							placeholder="본인이 작성했던 오답을 입력해주세요." required>
+							placeholder="본인이 작성했던 오답을 입력해 주세요." required>
 					</div>
 				</div>
 				<!-- 문제 설명 -->
@@ -269,7 +269,7 @@ h3 {
 					<div class="description">
 						<label for="formGroupExampleInput">문제 설명</label> <input
 							type="text" class="form-control" id="formGroupExampleInput"
-							placeholder="설명을 입력해주세요." required>
+							placeholder="설명을 입력해 주세요." required>
 					</div>
 				</div>
 				<!-- 뒤로, 등록 버튼 -->

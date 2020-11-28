@@ -106,7 +106,8 @@ h5 {
 			<!-- 난이도 -->
 			<div class="show">
 				<h6>난이도</h6>
-				 <img src="img/star.png" width="10", height="10"> 
+				 <img src="${pageContext.request.contextPath}/resources/img/star.png" width="30" height="30">
+				 <img src="${pageContext.request.contextPath}/resources/img/star.png" width="30" height="30">
  
 			</div>
 			<!-- 카테고리 -->

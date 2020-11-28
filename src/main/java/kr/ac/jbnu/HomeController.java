@@ -93,4 +93,14 @@ public class HomeController {
 	public String calendarPopupPage(Model model) {
 		return "/schedule/schedulePopup";
 	}
+	
+	@RequestMapping(value = "/list/notelist", method = RequestMethod.GET)
+	public String notelistPage(Model model) {
+		return "/list/notelist";
+	}
+	
+	@RequestMapping(value = "/list/select", method = RequestMethod.GET)
+	public String selectPage(Model model) {
+		return "/list/select";
+	}
 }

@@ -16,7 +16,7 @@ public class NoteDao {
 			
 			//save student object
 			session.save(note);
-			System.out.println("Successfully create : "+note.toString());
+			System.out.println("Successfully create : "+ note.toString());
 			//commit the transaction
 			transaction.commit();
 			

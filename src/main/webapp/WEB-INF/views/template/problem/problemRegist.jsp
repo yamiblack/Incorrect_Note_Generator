@@ -105,10 +105,12 @@ h3 {
 		</section>
 		<!-- End Breadcrumbs Section -->
 
-		<!-- 각자 제작한 것 추가해주세요 -->
+        <!-- 각자 제작한 것 추가해주세요 -->
+        
+
 
 		<div class="container">
-			<form>
+			<form action="save_do.jsp" method="post">
 				<!-- 문제 등록 폼 -->
 				<h3>객관식 문제 등록</h3>
 				<h4>문제 정보</h4>
@@ -117,26 +119,26 @@ h3 {
 					<div class="row">
 						<div class="col">
 							<label for="formGroupExampleInput">제목</label> <input type="text"
-								class="form-control" id="formGroupExampleInput"
+								class="form-control" name="title" id="formGroupExampleInput"
 								placeholder="제목을 입력해 주세요" required>
 						</div>
 						<div class="col">
 							<label for="formGroupExampleInput">난이도</label> </br>
 							<div class="startRadio">
 								<label class="startRadio__box"> <input type="radio"
-									name="star" id=""> <span class="startRadio__img"><span
+									name="star1" id=""> <span class="startRadio__img"><span
 										class="blind">별 1개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star" id=""> <span class="startRadio__img"><span
+									name="star2" id=""> <span class="startRadio__img"><span
 										class="blind">별 2개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star" id=""> <span class="startRadio__img"><span
+									name="star3" id=""> <span class="startRadio__img"><span
 										class="blind">별 3개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star" id=""> <span class="startRadio__img"><span
+									name="star4" id=""> <span class="startRadio__img"><span
 										class="blind">별 4개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star" id=""> <span class="startRadio__img"><span
+									name="star5" id=""> <span class="startRadio__img"><span
 										class="blind">별 5개</span></span>
 								</label>
 							</div>
@@ -169,7 +171,7 @@ h3 {
 				<!-- 문제입력 -->
 				<div class="form-group">
 					<label for="formGroupExampleInput">문제</label> <input type="text"
-						class="form-control" id="formGroupExampleInput"
+						name-"content" class="form-control" id="formGroupExampleInput"
 						placeholder="문제를 입력해 주세요." required>
 				</div>
 				<!-- 사진 추가 -->
@@ -208,27 +210,27 @@ h3 {
 							<div class="row">
 								<div class="col">
 									<p>
-										<input type="text" class="form-control"
+										<input type="text" class="form-control" name="choice1"
 											id="formGroupExampleInput" placeholder="보기1을 입력해 주세요."
 											required>
 									</p>
 									<p>
-										<input type="text" class="form-control"
+										<input type="text" class="form-control" name="choice2"
 											id="formGroupExampleInput" placeholder="보기2를 입력해 주세요."
 											required>
 									</p>
 									<p>
-										<input type="text" class="form-control"
+										<input type="text" class="form-control" name="choice3"
 											id="formGroupExampleInput" placeholder="보기3을 입력해 주세요."
 											required>
 									</p>
 									<p>
-										<input type="text" class="form-control"
+										<input type="text" class="form-control" name="choice4"
 											id="formGroupExampleInput" placeholder="보기4를 입력해 주세요."
 											required>
 									</p>
 									<p>
-										<input type="text" class="form-control"
+										<input type="text" class="form-control" name="choice5"
 											id="formGroupExampleInput" placeholder="보기5를 입력해 주세요."
 											required>
 									</p>
@@ -251,24 +253,25 @@ h3 {
 				<div class="form-group">
 					<div class="answer">
 						<label for="formGroupExampleInput">정답</label> <input type="text"
-							class="form-control" id="formGroupExampleInput"
+							name="answer" class="form-control" id="formGroupExampleInput"
 							placeholder="정답을 입력해 주세요." required>
 					</div>
 				</div>
 
-				<!-- 문제입력 -->
+				<!-- 오답 입력 -->
 				<div class="form-group">
 					<div class="wronganswer">
 						<label for="formGroupExampleInput">작성했던 오답</label> <input
-							type="text" class="form-control" id="formGroupExampleInput"
+							type="text" name="wronganswer" class="form-control" id="formGroupExampleInput"
 							placeholder="본인이 작성했던 오답을 입력해 주세요." required>
 					</div>
 				</div>
+				
 				<!-- 문제 설명 -->
 				<div class="form-group">
 					<div class="description">
 						<label for="formGroupExampleInput">문제 설명</label> <input
-							type="text" class="form-control" id="formGroupExampleInput"
+							type="text" name="description" class="form-control" id="formGroupExampleInput"
 							placeholder="설명을 입력해 주세요." required>
 					</div>
 				</div>
@@ -279,7 +282,8 @@ h3 {
 						<button class="btn btn-small" id="advanced-set-submit">뒤로</button>
 					</div>
 					<div class="form-row float-right">
-						<button class="btn btn-small" id="advanced-set-submit">등록</button>
+                        <!-- <button class="btn btn-small" id="advanced-set-submit">등록</button> -->
+						<input type="submit" class="btn btn-small" id="advanced-set-submit">등록</input>
 					</div>
 				</div>
 			</form>

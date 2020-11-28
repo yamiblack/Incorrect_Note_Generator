@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR"
+    import= "kr.ac.jbnu.entity.model.*"
+    import= "kr.ac.jbnu.entity.dao.NoteDao"
+    import= "java.util.List"
+    import= "java.sql.Connection"
+    import= "java.sql.ResultSet"
+    import= "java.sql.Statement"
+    import= "java.sql.DriverManager"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +14,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+	
 	<jsp:include page="../static/nav.jsp"></jsp:include>
 	
 	<main id="main">
@@ -18,7 +27,7 @@
 				<div class="d-flex justify-content-between align-items-center">
 				<h2>오답노트</h2>
 					<ol>
-						<li><a href="main">Home</a></li>
+						<li><a href="${pageContext.request.contextPath}/main">Home</a></li>
 						<li>오답노트</li>
 					</ol>
 				</div>
@@ -53,13 +62,36 @@
 						</tr>
 					</thead>
 					<tbody>
-					
-	<%-- 				<%
-						for(){{
-							
-						}
-					%> --%>
-					
+					<%
+					try {
+						Class.forName("com.mysql.cj.jdbc.Driver");
+						
+						Connection conn = null;
+						Statement stmt = null;
+						ResultSet rs = null;
+						
+						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+						stmt = conn.createStatement();
+						
+						rs = stmt.executeQuery("select * from note;");
+						
+						while(rs.next()){
+							%><tr>
+							<td><%=rs.getString("id")%></td>
+							<td><%=rs.getString("content")%></td>
+							<td><%=rs.getString("date")%></td>
+						<% }
+						
+						rs.close();
+						stmt.close();
+						conn.close();
+
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+					%>
 						<tr>
 							<th scope="row">1</th>
 							<td><a href="http://www.naver.com"/>데이터 통신</a></td>
@@ -68,7 +100,8 @@
 					</tbody>
 				</table>
 				<!-- <button class="btn btn-small" type="submit">추가</button> -->
-				<input class ="btn btn-small" onclick="add_note();" type="button" value="추가"/>
+				
+				<button class="btn btn-small" onclick= "location.href='${pageContext.request.contextPath}/template/problem/problemRegist'" type="submit">추가</button>
 				<button class="btn btn-small" type="submit">삭제</button>
 			</div>
 		</div>
@@ -97,13 +130,14 @@
 	}
 	
 	</script> -->
-	
-	<script>
-		function add_note(){
-			
-			Note note = new Note("고웹 1번", "5", "고웹", "이 문제의 정답은!?", "일번", "이번", "삼번", "사번", "오번", "3번", "2번", "3번이 답이다 똥멍청아.");
-		}
-	</script>
 
+	<script>
+	function click_add(){
+		var url = "${pageContext.request.contextPath}/template/problem/problemRegist";
+		var name = "regist";
+		/* var option = "width = 600, height = 600 left = 100,top=50,location=no"; */
+		window.open(url,name,option)
+	}
+	</script>
 </body>
 </html>

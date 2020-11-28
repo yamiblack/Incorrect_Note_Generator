@@ -43,14 +43,14 @@
       <div class="container">
 
          <div id="logo" class="pull-left">
-            <a href=""><img src="${pageContext.request.contextPath}/resources/img/logo-nav.png" alt=""></a>
+            <a href="${pageContext.request.contextPath}/main"><img src="${pageContext.request.contextPath}/resources/img/logo-nav.png" alt=""></a>
             <!-- Uncomment below if you prefer to use a text image -->
             <!--<h1><a href="#hero">Bell</a></h1>-->
          </div>
 
          <nav id="nav-menu-container">
             <ul class="nav-menu">
-               <li class="menu-has-children"><a href="">오답노트</a>
+               <li class="menu-has-children"><a href="${pageContext.request.contextPath}/list/notelist">오답노트</a>
                   <ul>                     
                      <li class="menu"><a href="${pageContext.request.contextPath}/template/problem/problemRegist">문제 등록</a>
                      <li class="menu"><a href="${pageContext.request.contextPath}/list/notelist">문제 리스트</a>                        
@@ -62,7 +62,7 @@
          <!-- #nav-menu-container -->
 
          <nav class="nav social-nav pull-right d-none d-lg-inline">
-            <a href="#">로그인</a> 
+            <a href="${pageContext.request.contextPath}/template/login/LoginForm">로그인</a> 
       </div>
    </header>
    <!-- End Header -->

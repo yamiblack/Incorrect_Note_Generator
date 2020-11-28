@@ -16,6 +16,7 @@ public class Note {
 	
 	public Note(String name, Integer level, String category, String content, String choice1, String choice2,
 			String choice3, String choice4, String choice5, String answer, String mywrong, String description) {
+		System.out.println("»ý¼º");
 		this.name = name;
 		this.level = level;
 		this.category = category;

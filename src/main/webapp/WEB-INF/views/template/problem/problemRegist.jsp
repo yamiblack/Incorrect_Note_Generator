@@ -110,7 +110,7 @@ h3 {
 
 
 		<div class="container">
-			<form action="save_do.jsp" method="post">
+			<form name="regist" action="save_do" method="GET">
 				<!-- 문제 등록 폼 -->
 				<h3>객관식 문제 등록</h3>
 				<h4>문제 정보</h4>
@@ -122,23 +122,23 @@ h3 {
 								class="form-control" name="title" id="formGroupExampleInput"
 								placeholder="제목을 입력해 주세요" required>
 						</div>
-						<div class="col">
+						<div class="col"> 
 							<label for="formGroupExampleInput">난이도</label> </br>
 							<div class="startRadio">
 								<label class="startRadio__box"> <input type="radio"
-									name="star1" id=""> <span class="startRadio__img"><span
+									name="star" id="" value="1"> <span class="startRadio__img"><span
 										class="blind">별 1개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star2" id=""> <span class="startRadio__img"><span
+									name="star" id=""  value="2"> <span class="startRadio__img"><span
 										class="blind">별 2개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star3" id=""> <span class="startRadio__img"><span
+									name="star" id=""  value="3"> <span class="startRadio__img"><span
 										class="blind">별 3개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star4" id=""> <span class="startRadio__img"><span
+									name="star" id=""  value="4"> <span class="startRadio__img"><span
 										class="blind">별 4개</span></span>
 								</label> <label class="startRadio__box"> <input type="radio"
-									name="star5" id=""> <span class="startRadio__img"><span
+									name="star" id="" value="5" > <span class="startRadio__img"><span
 										class="blind">별 5개</span></span>
 								</label>
 							</div>
@@ -159,15 +159,15 @@ h3 {
 					</div>
 				</div> -->
 				<!-- 카테고리 -->
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<div class="category">
 						<label for="inputState">카테고리</label> <select id="inputState"
-							class="form-control">
-							<option selected>카테고리</option>
-							<option>...</option>
+							class="form-control" name="cate">
+							<option value="카테고리" selected>카테고리</option>
+							<option value="카테고리">...</option>
 						</select>
 					</div>
-				</div>
+				</div> -->
 				<!-- 문제입력 -->
 				<div class="form-group">
 					<label for="formGroupExampleInput">문제</label> <input type="text"
@@ -279,11 +279,10 @@ h3 {
 				<div class="d-flex justify-content-between"
 					style="margine-bottom: 3px;">
 					<div class="form-row float-left">
-						<button class="btn btn-small" id="advanced-set-submit">뒤로</button>
+						<a class="btn btn-small" href="${pageContext.request.contextPath}/list/notelist" id="advanced-set-submit">뒤로</a>
 					</div>
 					<div class="form-row float-right">
-                        <!-- <button class="btn btn-small" id="advanced-set-submit">등록</button> -->
-						<input type="submit" class="btn btn-small" id="advanced-set-submit">등록</input>
+						<input type="submit" class="btn btn-small form-control" value = "등록"></input>
 					</div>
 				</div>
 			</form>

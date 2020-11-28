@@ -74,6 +74,10 @@ public class HomeController {
 		return "/template/problem/problemRegist";
 	}
 
+	@RequestMapping(value = "/template/problem/save_do", method = RequestMethod.GET)
+	public String save_do(Model model) {
+		return "/template/problem/save_do";
+	}
 	@RequestMapping(value = "/template/problem/showProblem", method = RequestMethod.GET)
 	public String showProblem(Model model) {
 		return "/template/problem/showProblem";

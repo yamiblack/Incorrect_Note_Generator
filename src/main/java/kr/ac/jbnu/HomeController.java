@@ -84,6 +84,11 @@ public class HomeController {
 		return "/template/problem/testPage";
 	}
 	
+	@RequestMapping(value = "/template/problem/testResualt", method = RequestMethod.POST)
+	   public String testResualt(Model model) {
+	      return "/template/problem/testResualt";
+	   }
+	
 	@RequestMapping(value = "/schedule/schedule", method = RequestMethod.GET)
 	public String calendarPage(Model model) {
 		return "/schedule/schedule";
@@ -108,4 +113,19 @@ public class HomeController {
 	public String saveSchedulepPage(Model model) {
 		return "/schedule/save_schedule";
 	}
+	
+	@RequestMapping(value = "/template/login/LoginForm", method = RequestMethod.GET)
+	   public String LoginForm(Model model) {
+	      return "/template/login/LoginForm";
+	   }
+	   
+	   @RequestMapping(value = "/template/login/JoinForm", method = RequestMethod.GET)
+	   public String JoinForm(Model model) {
+	      return "/template/login/JoinForm";
+	   }
+	   
+	   @RequestMapping(value = "/template/pro/JoinPro", method = RequestMethod.GET)
+	   public String JoinPro(Model model) {
+	      return "/template/pro/JoinPro";
+	   }
 }

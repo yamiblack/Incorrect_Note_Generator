@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=utf-8"%>
+<%@ page import="java.util.*"%>
 <%@ page session="false"%>
 
 <!DOCTYPE html>
@@ -63,8 +64,7 @@ ul {
    column-rule-style: dotted;
    column-rule-width: 2px;
    border-top: 1px solid gray;
-   min-height: 150px;
-   overflow: false;
+   min-height: 300px;
 }
 
 .comment {
@@ -85,35 +85,43 @@ ul {
 #problems {
    height: 250px;
 }
+
+#correct{
+   color:green;
+}
+#wrong{
+   color:red;
+}
 </style>
 
 </head>
 <body>
    <jsp:include page="../../static/nav.jsp"></jsp:include>
    <main id="main">
-      <%
-         int checked = 0;
-      %>
+   <%
+      List<String> ans = new ArrayList<String>();
+      List<String> answersheets = new ArrayList<String>();
+      List<Boolean> resualt = new ArrayList<Boolean>();
+      for (int i = 0; i < 10; i++) {
+         ans.add("1");
+         String param = "choiceview" + (i+1);
+         answersheets.add(request.getParameter(param));
+      }
+      
+      for (int i = 0; i < 10; i++) {
+         System.out.println(i+"="+answersheets.get(i));
+         if(ans.get(i).equals(answersheets.get(i))){
+            resualt.add(true);
+         }
+         else{
+            resualt.add(false);
+         }
+      } 
+   %>
       <!-- 각자 제작한 것 추가해주세요 -->
       <div class="container">
-         <div class="comment">
-            <div class="form-row float-left">
-               <h3>테스트</h3>
-            </div>
-            <div class="form-row float-right align-self-center">
-               <div class="progress">
-                  <p>진행률</p>
-                  <div
-                     class="progress-bar progress-bar-striped progress-bar-animated"
-                     role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                     aria-valuemax="100" style="width:<%=checked % 10 * 100%>"></div>
-               </div>
-            </div>
-         </div>
+         
 
-         <form name="answerSheet"
-            action="${pageContext.request.contextPath}/template/problem/testResualt"
-            method="post">
             <div class="test">
                <ul>
                   <%
@@ -125,28 +133,32 @@ ul {
                         오류에 대해 가장 잘 설명하였는가?
                      </div>
                      <div class="answer">
-                        <input type="radio" value="1" name=<%="choiceview"+i%>>보기 1<br>
-                        <input type="radio" value="2" name=<%="choiceview"+i%>>보기 2<br> 
-                        <input type="radio" value="3" name=<%="choiceview"+i%>>보기 3<br>
-                        <input type="radio" value="4" name=<%="choiceview"+i%>>보기 4<br> 
-                        <input type="radio" value="5" name=<%="choiceview"+i%>>보기 5<br>
+                        
+                        <input type="radio" value="1" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("1")) { %>checked<%} %> disabled>보기 1<br> 
+                        <input type="radio" value="2" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("2")) { %>checked<%} %> disabled>보기 2<br> 
+                        <input type="radio" value="3" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("3")) { %>checked<%} %> disabled>보기 3<br> 
+                        <input type="radio" value="4" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("4")) { %>checked<%} %> disabled>보기 4<br> 
+                        <input type="radio" value="5" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("5")) { %>checked<%} %> disabled>보기 5<br> 
+                     
                      </div>
-                     <p id="checked"></p>
+                        <%if(resualt.get(i-1)){ %>
+                           <p id="correct">정답입니다.</p>
+                        <%} else{%>
+                           <p id ="wrong">오답입니다. 정답은 <%=ans.get(i-1) %> 입니다.</p>
+                        <%} %>                     
                   </li>
                   <%
                      }
                      if (i % 2 == 0) {
                   %>
-                     <li id="problems"></li>
+                  <li id="problems"></li>
                   <%
                      }
                   %>
 
                </ul>               
             </div>
-            <input type="submit" class="btn bnt-middle form-control"
-                  value="채점하기">
-         </form>
+         
          <div class="pageend ">
             <ul class="pagination justify-content-center">
                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
@@ -159,9 +171,8 @@ ul {
    </main>
    <jsp:include page="../../static/footer.jsp"></jsp:include>
    <a class="scrolltop" href="#"><span class="fa fa-angle-up"></span></a>
-
-
-
+   <!-- 
+   
    <!-- Vendor JS Files -->
    <script
       src="${pageContext.request.contextPath}/resources/vendor/jquery/jquery.min.js"></script>

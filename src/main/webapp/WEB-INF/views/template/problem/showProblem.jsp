@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>ING</title>
+<title>ING : 문제 조회</title>
 <meta content="" name="descriptison">
 <meta content="" name="keywords">
 
@@ -89,7 +89,7 @@ h5 {
 			<div class="container">
 
 				<div class="d-flex justify-content-between align-items-center">
-					<h2>문제 풀기</h2>
+					<h2>문제 조회</h2>
 					<ol>
 						<li><a href="index.html">Home</a></li>
 						<li>오답노트</li>
@@ -106,7 +106,8 @@ h5 {
 			<!-- 난이도 -->
 			<div class="show">
 				<h6>난이도</h6>
-
+				 <img src="img/star.png" width="10", height="10"> 
+ 
 			</div>
 			<!-- 카테고리 -->
 			<div class="show">
@@ -119,15 +120,26 @@ h5 {
 				<h6>7번 3+2는?</h6>
 			</div>
 			<!-- 사진 추가 -->
-			<div class="show">
+<!-- 			<div class="show">
 				<h6>문제 사진</h6>
 				<img src="" alt="" class="img-thumbnail">
+			</div> -->
+			<!-- 보기 -->
+			<div class="show">
+				<h6>보기</h6>
+				<h6>1. 1</h6>
+				<h6>2. 2</h6>
+				<h6>3. 3</h6>
+				<h6>4. 4</h6>
+				<h6>5. 5</h6>
 			</div>
+			
 			<!-- 답 -->
 			<div class="show">
 				<h6>답</h6>
 				<h6>5</h6>
 			</div>
+			
 			<!-- 나의 오답 -->
 			<div class="show">
 				<h6>나의 오답</h6>

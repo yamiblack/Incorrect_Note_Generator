@@ -103,4 +103,9 @@ public class HomeController {
 	public String selectPage(Model model) {
 		return "/list/select";
 	}
+	
+	@RequestMapping(value = "/schedule/save_schedule", method = RequestMethod.POST)
+	public String saveSchedulepPage(Model model) {
+		return "/schedule/save_schedule";
+	}
 }

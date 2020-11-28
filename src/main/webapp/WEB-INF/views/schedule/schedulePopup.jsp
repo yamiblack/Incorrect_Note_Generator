@@ -23,7 +23,7 @@
 		<h1 class = "zTree-h1"> 일정 추가 </h1>
 	</div>
 	<div class = "group-body">
-	<form id = "scheduleData">
+	<form id = "scheduleData" action="save_schedule" method="post">
 		<div class = "top">
 			<input class = "subject" id = "subject" type = "text" name = "subject" placeholder="제목을 입력해주세요">
 		</div>
@@ -45,8 +45,8 @@
 		<div class = "domain">
 			<textarea class = "memo" id = "memo" name = "memo" rows = "5" cols = "20" placeholder="100글자까지 입력 가능합니다"></textarea> 
 		</div>
+		<input class="ok-button" type="submit" value="확인">
 	</form>
-		<button class = "ok-button" type= "button" onclick="click_ok();">확인</button>
 	</div>	
 	
 	

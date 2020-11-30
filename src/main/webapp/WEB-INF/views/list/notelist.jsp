@@ -69,7 +69,7 @@
 						Statement stmt = null;
 						ResultSet rs = null;
 						
-						conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+						conn = DriverManager.getConnection("jdbc:mysql://211.33.126.173:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "woong", "kangjidks2@");
 						stmt = conn.createStatement();
 						
 						rs = stmt.executeQuery("select * from note;");

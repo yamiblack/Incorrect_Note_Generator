@@ -24,6 +24,9 @@
 		String userID = null;
 	if (session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
+		System.out.println(userID);
+	}else{
+		System.out.println("아이디가 없어");
 	}
 	if (userID != null) {
 		PrintWriter script = response.getWriter();

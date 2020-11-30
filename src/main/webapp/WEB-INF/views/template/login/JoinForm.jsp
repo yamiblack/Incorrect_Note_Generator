@@ -57,7 +57,7 @@
                     <td id="title">아이디</td>
                     <td>
                         <input type="text" name="id" maxlength="50">
-                        <input type="button" value="중복확인" >    
+                        <input type="button" onclick="" value="중복확인" >    
                     </td>
                 </tr>
                         

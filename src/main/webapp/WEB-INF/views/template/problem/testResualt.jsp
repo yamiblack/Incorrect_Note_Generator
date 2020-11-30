@@ -121,9 +121,19 @@ ul {
                   List<String> answersheets = new ArrayList<String>();
                   String tmp = request.getParameter("choiceview0");
                   String pnum[] = new String[Integer.parseInt(tmp.split("_")[1])];
+                  String vougi[] = new String[Integer.parseInt(tmp.split("_")[1])];
+                  String ans[] = new String[Integer.parseInt(tmp.split("_")[1])];
+                  System.out.println(tmp);
                   for (int i = 0; i < Integer.parseInt(tmp.split("_")[1]); i++) {
                      pnum[i] = request.getParameter("choiceview" + i).split("_")[0];
                      answersheets.add(request.getParameter("choiceview" + i).split("_")[2]);
+                     vougi[i] = request.getParameter("choiceview" + i).split("_")[3];
+                     for(int k = 0; k<5; k++){
+                        if(vougi[i].charAt(k)==(answersheets.get(i).charAt(0))){
+                           ans[i] = Integer.toString(k+1);
+                           System.out.println(ans[i] +" "+ vougi[i].charAt(k) + " " + answersheets.get(i).charAt(0) );
+                        }
+                     }
                   }
                   try {
                      Class.forName("com.mysql.cj.jdbc.Driver");
@@ -133,7 +143,7 @@ ul {
                      ResultSet rs = null;
 
                      conn = DriverManager.getConnection(
-                           "jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+                           "jdbc:mysql://211.33.126.173:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "woong", "kangjidks2@");
                      stmt = conn.createStatement();
 
                      int i;
@@ -145,30 +155,34 @@ ul {
                   <div class="question"><%=(i + 1) + ". " + rs.getString("content")%>
                   </div>
                   <div class="answer">
-                     <input type="radio" value="1" name=<%="choiceview" + i%>
-                        <%if (answersheets.get(i).equals("1")) {%> checked <%}%>
-                        disabled><%=rs.getString("choice1") %><br> <input type="radio" value="2"
-                        name=<%="choiceview" + i%>
-                        <%if (answersheets.get(i).equals("2")) {%> checked <%}%>
-                        disabled><%=rs.getString("choice2") %><br> <input type="radio" value="3"
-                        name=<%="choiceview" + i%>
-                        <%if (answersheets.get(i).equals("3")) {%> checked <%}%>
-                        disabled><%=rs.getString("choice3") %><br> <input type="radio" value="4"
-                        name=<%="choiceview" + i%>
-                        <%if (answersheets.get(i).equals("4")) {%> checked <%}%>
-                        disabled><%=rs.getString("choice4") %><br> <input type="radio" value="5"
-                        name=<%="choiceview" + i%>
-                        <%if (answersheets.get(i).equals("5")) {%> checked <%}%>
-                        disabled><%=rs.getString("choice5") %><br>
+                     <%
+                        for (int k = 1; k < 6; k++) {
+                     %>
+                     
+                     <input type="radio" value=<%=k %> name=<%="choiceview" + i%>
+                        <%if (answersheets.get(i).equals(Integer.toString(k))) {%> checked <%}%>
+                        disabled><%=rs.getString("choice" + vougi[i].charAt(k - 1))%><br>                        
+                     <%
+                        }
+                     %>
+
                   </div> <%
-    if (rs.getString("answer").equals(answersheets.get(i))) {
+    if (rs.getString("answer").equals(ans[i])) {
  %>
                   <p id="correct">정답입니다.</p> <%
     } else {
  %>
                   <p id="wrong">
                      오답입니다. 정답은
-                     <%=rs.getString("answer")%>입니다.<br> 해설:<br>
+                     <%for(int k = 0; k<5; k++){
+                        if(vougi[i].charAt(k)==rs.getString("answer").charAt(0)){
+                           %>
+                              "<%=k+1%>번"입니다.<br>해설 : <br>
+                           <%
+                        break;
+                        }
+                     } %>
+                     
                      <%=rs.getString("description")%>
                   </p> <%
     }

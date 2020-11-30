@@ -48,7 +48,7 @@
 <body>
 <jsp:include page="../../static/nav.jsp"></jsp:include>
     <div id="wrap">
-        <form name="loginInfo" method="post" action="/pro/LoginPro" 
+        <form name="loginInfo" method="get" action="${pageContext.request.contextPath}/template/pro/LoginPro" 
                 onsubmit="return checkValue()">
         
             <!-- 이미지 추가 -->
@@ -58,7 +58,7 @@
             <table>
                 <tr>
                     <td bgcolor="skyblue">아이디</td>
-                    <td><input type="text" name="id" maxlength="50"></td>
+                    <td><input type="text" name="userId" maxlength="50"></td>
                 </tr>
                 <tr>
                     <td bgcolor="skyblue">비밀번호</td>

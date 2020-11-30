@@ -22,14 +22,6 @@ public class MemberDAO {
 	PreparedStatement pstmt;
 	Statement stmt;
 
-	// 싱글톤 패턴
-	public MemberDAO() throws ClassNotFoundException {
-		String dbURL = "jdbc:mysql://localhost:3306/yhshin?serverTimezone=UTC";
-		String dbID = "root";
-		String dbPassword = "1041";
-		Class.forName("com.mysql.cj.jdbc.Driver");
-	}
-
 	public static MemberDAO getInstance() throws ClassNotFoundException {
 		if (instance == null)
 			instance = new MemberDAO();
@@ -64,7 +56,7 @@ public class MemberDAO {
 			// 쿼리 생성한다.
 			// 가입일의 경우 자동으로 세팅되게 하기 위해 sysdate를 사용
 			StringBuffer sql = new StringBuffer();
-			sql.append("insert into JSP_MEMBER values");
+			sql.append("insert into user values");
 			sql.append("(?, ?, ?, ?, ?, ?, ?, ?, sysdate)");
 			stringToDate(member);
 			/*
@@ -137,7 +129,7 @@ public class MemberDAO {
 			
 			pstmt.setString(10, member.getAddress());
 
-			return 0;
+			return pstmt.executeUpdate();
 
 			
 
@@ -162,11 +154,10 @@ public class MemberDAO {
 		try {
 			// 쿼리 - 먼저 입력된 아이디로 DB에서 비밀번호를 조회한다.
 			StringBuffer query = new StringBuffer();
-			query.append("SELECT PASSWORD FROM JSP_MEMBER WHERE ID=?");
+			query.append("SELECT password FROM user WHERE id=" + id);
 
-			conn = DBConnection.getConnection();
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
 			pstmt = conn.prepareStatement(query.toString());
-			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 
 			if (rs.next()) // 입려된 아이디에 해당하는 비번 있을경우
@@ -201,5 +192,7 @@ public class MemberDAO {
 			}
 		}
 	} // end loginCheck()
+	
+
 
 }

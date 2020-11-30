@@ -12,6 +12,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import jsp.util.DBConnection;
 import kr.ac.jbnu.entity.model.Note;
 import kr.ac.jbnu.entity.util.HibernateUtil;
 
@@ -23,8 +24,8 @@ public class NoteDao {
 			String SQL = "insert into note(id, answer, category, choice1, choice2, choice3, choice4, choice5, content, date, description, level, mywrong, name) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+			DBConnection dbc = new DBConnection();
+			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 			pstmt = conn.prepareStatement(SQL);
 			
 			pstmt.executeUpdate();

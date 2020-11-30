@@ -1,5 +1,6 @@
 package kr.ac.jbnu.entity.util;
 
+import java.sql.DriverManager;
 import java.util.Properties;
 
 import org.hibernate.SessionFactory;
@@ -8,6 +9,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
+import jsp.util.DBConnection;
 import kr.ac.jbnu.entity.model.Note;
 
 public class HibernateUtil {
@@ -16,13 +18,12 @@ public class HibernateUtil {
 		if (sessionFactory == null) {
 			try {
 				Configuration configuration = new Configuration();
-
-				
+				DBConnection dbc = new DBConnection();
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-				settings.put(Environment.URL, "jdbc:mysql://localhost:3306/ing.note?characterEncoding=UTF-8&serverTimezone=UTC");
-				settings.put(Environment.USER, "root");
-				settings.put(Environment.PASS, "1234");
+				settings.put(Environment.URL, dbc.getDataUrl());
+				settings.put(Environment.USER, dbc.getUser());
+				settings.put(Environment.PASS, dbc.getPassword());
 				settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 
 				settings.put(Environment.SHOW_SQL, "true");

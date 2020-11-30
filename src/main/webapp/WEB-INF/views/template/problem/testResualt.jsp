@@ -3,7 +3,7 @@
    import="kr.ac.jbnu.entity.dao.NoteDao" import="java.util.List"
    import="java.util.ArrayList" import="java.sql.Connection"
    import="java.sql.ResultSet" import="java.sql.Statement"
-   import="java.sql.DriverManager"%>
+   import="java.sql.DriverManager" import="jsp.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -142,8 +142,8 @@ ul {
                      Statement stmt = null;
                      ResultSet rs = null;
 
-                     conn = DriverManager.getConnection(
-                           "jdbc:mysql://211.33.126.173:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "woong", "kangjidks2@");
+                     DBConnection dbc = new DBConnection();
+         			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
                      stmt = conn.createStatement();
 
                      int i;

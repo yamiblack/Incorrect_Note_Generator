@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import="java.sql.*"%>
+    import="java.sql.*"
+    import="jsp.util.*"%>
 <script>
 
 /* 퀵메뉴 창닫기 기능 */ 
@@ -24,8 +25,8 @@ function WinClose()
 	System.out.print(subject);
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String DB_URL = "jdbc:mysql://localhost:3306/company?useUnicode=true&characterEncoding=utf8";
-		Connection con = DriverManager.getConnection(DB_URL,"root","jwon4930");
+		DBConnection dbc = new DBConnection();
+		Connection con = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 		
 		String sql = "INSERT INTO schedule(subject,startDate,endDate,memo) VALUES(?,?,?,?)";
 		

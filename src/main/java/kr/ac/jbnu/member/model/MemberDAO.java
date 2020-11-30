@@ -103,7 +103,8 @@ public class MemberDAO {
 		
 		String SQL;
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+			DBConnection dbc = new DBConnection();
+			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			SQL = "INSERT INTO USER VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -156,7 +157,8 @@ public class MemberDAO {
 			StringBuffer query = new StringBuffer();
 			query.append("SELECT password FROM user WHERE id=" + id);
 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+			DBConnection dbc = new DBConnection();
+			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 			pstmt = conn.prepareStatement(query.toString());
 			rs = pstmt.executeQuery();
 

@@ -5,7 +5,8 @@
     import= "java.sql.Connection"
     import= "java.sql.ResultSet"
     import= "java.sql.Statement"
-    import= "java.sql.DriverManager"%>
+    import= "java.sql.DriverManager"
+    import="jsp.util.*"%>
 <!DOCTYPE html>
 <html>
 
@@ -115,7 +116,8 @@ h5 {
 			Statement stmt = null;
 			ResultSet rs = null;
 			
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+			DBConnection dbc = new DBConnection();
+			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 			stmt = conn.createStatement();
 			
 			String id = request.getParameter("id");

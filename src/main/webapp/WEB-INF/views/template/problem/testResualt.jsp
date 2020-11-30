@@ -143,7 +143,7 @@ ul {
                      ResultSet rs = null;
 
                      conn = DriverManager.getConnection(
-                           "jdbc:mysql://211.33.126.173:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "woong", "kangjidks2@");
+                           "jdbc:mysql://211.33.126.173/ing?characterEncoding=UTF-8&serverTimezone=UTC", "san", "123123");
                      stmt = conn.createStatement();
 
                      int i;

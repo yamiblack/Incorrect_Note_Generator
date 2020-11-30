@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+ <%@ page language="java" contentType="text/html; charset=EUC-KR"
    pageEncoding="EUC-KR" import="kr.ac.jbnu.entity.model.*"
    import="kr.ac.jbnu.entity.dao.NoteDao" import="java.util.List"
    import="java.sql.Connection" import="java.sql.ResultSet"
-   import="java.sql.Statement" import="java.sql.DriverManager"%>
+   import="java.sql.Statement" import="java.sql.DriverManager"
+   import="java.util.Random"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -122,29 +123,43 @@ ul {
                         Statement stmt = null;
                         ResultSet rs = null;
 
-                        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+                        conn = DriverManager.getConnection("jdbc:mysql://211.33.126.173/ing?characterEncoding=UTF-8&serverTimezone=UTC", "san", "123123");
                         stmt = conn.createStatement();
 
                         int i;
                         for (i = 0; i < pnum.length; i++) {
                            rs = stmt.executeQuery("select * from note where id=" + pnum[i] + ";");
                            while (rs.next()) {
-                  %>
-                  <li id="problems">
-                     <div class="question"><%=(i + 1) + ". " + rs.getString("content")%>
+                              %>
+                     <li id="problems">
+                       <div class="question"><%=(i + 1) + ". " + rs.getString("content")%>
+                        </div>
+                        
+                        <div class="answer">            
+                              <%
+                              boolean arr[] = {false, false, false, false, false};
+                              String vougi = "";
+                                          
+                              for(int k = 1; k<6; k++){
+                                 int ran;
+                                 Random rand = new Random();
+                                 ran = rand.nextInt(5);
+                                 while(arr[ran]){
+                                    ran = rand.nextInt(5);
+                                 }
+                                 arr[ran] = true;
+                                 ran+=1;
+                                 vougi += Integer.toString(ran);
+                              }
+                              for(int k = 1; k<6; k++){
+                             %>
+                        <input type="radio" value=<%=pnum[i] + "_" + Integer.toString(pnum.length) + "_" + k +"_"+vougi %>
+                           name=<%="choiceview" + i%>><%=rs.getString("choice"+vougi.charAt(k-1))%><br>
+                               <%
+                              }  
+                             %>
                      </div>
-                     <div class="answer">
-                        <input type="radio" value=<%=pnum[i] + "_" + Integer.toString(pnum.length) + "_" + "1"%>
-                           name=<%="choiceview" + i%>><%=rs.getString("choice1")%><br>
-                        <input type="radio" value=<%=pnum[i] + "_" + Integer.toString(pnum.length) + "_" + "2"%>
-                           name=<%="choiceview" + i%>><%=rs.getString("choice2")%><br>
-                        <input type="radio" value=<%=pnum[i] + "_" + Integer.toString(pnum.length) + "_" + "3"%>
-                           name=<%="choiceview" + i%>><%=rs.getString("choice3")%><br>
-                        <input type="radio" value=<%=pnum[i] + "_" + Integer.toString(pnum.length) + "_" + "4"%>
-                           name=<%="choiceview" + i%>><%=rs.getString("choice4")%><br>
-                        <input type="radio" value=<%=pnum[i] + "_" + Integer.toString(pnum.length) + "_" + "5"%>
-                           name=<%="choiceview" + i%>><%=rs.getString("choice5")%><br>
-                     </div>
+                        
                      <p id="checked"></p>
                   </li>
                   <%

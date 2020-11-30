@@ -128,7 +128,7 @@ public class HomeController {
 	      return "/template/login/JoinForm";
 	   }
 	   
-	   @RequestMapping(value = "/template/pro/JoinPro", method = RequestMethod.GET)
+	   @RequestMapping(value = "/template/pro/JoinPro", method = RequestMethod.POST)
 	   public String JoinPro(Model model) {
 	      return "/template/pro/JoinPro";
 	   }

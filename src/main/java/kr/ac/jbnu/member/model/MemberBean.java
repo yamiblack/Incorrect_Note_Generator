@@ -1,4 +1,4 @@
-package jsp.member.model;
+package kr.ac.jbnu.member.model;
  
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -9,8 +9,11 @@ import java.util.Date;
 public class MemberBean 
 {
 	
-    public MemberBean(String password, String name, String gender, String birthyy, String birthmm, String birthdd,
+    public MemberBean() {
+	}
+	public MemberBean(String id, String password, String name, String gender, String birthyy, String birthmm, String birthdd,
 			String mail1, String mail2, String phone, String address) {
+		this.id = id;
 		this.password = password;
 		this.name = name;
 		this.gender = gender;

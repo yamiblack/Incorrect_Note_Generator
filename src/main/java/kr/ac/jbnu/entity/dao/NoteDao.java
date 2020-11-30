@@ -24,8 +24,6 @@ public class NoteDao {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			
-			
 			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
 			pstmt = conn.prepareStatement(SQL);
 			

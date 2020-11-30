@@ -1,9 +1,10 @@
-package jsp.member.model;
+package kr.ac.jbnu.member.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Date;
 import javax.naming.NamingException;
 import jsp.util.DBConnection;
@@ -11,7 +12,7 @@ import java.sql.DriverManager;
 
 /* Data Access Object
  * 테이블 당 한개의 DAO를 작성한다.
- * 
+ *
  * JSP_MEMBER 테이블과 연관된 DAO로
  * 회원 데이터를 처리하는 클래스이다.
  */
@@ -19,6 +20,7 @@ public class MemberDAO {
 	private static MemberDAO instance;
 	Connection conn;
 	PreparedStatement pstmt;
+	Statement stmt;
 
 	// 싱글톤 패턴
 	public MemberDAO() throws ClassNotFoundException {
@@ -106,32 +108,44 @@ public class MemberDAO {
 	} // end insertMember()
 
 	public int join(MemberBean member) {
-
-		String SQL = "INSERT INTO USER VALUES (?,?,?,?,?)";
-
+		
+		String SQL;
 		try {
-
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			SQL = "INSERT INTO USER VALUES (?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(SQL);
-
+			
 			pstmt.setString(1, member.getId());
 
 			pstmt.setString(2, member.getPassword());
 
-			pstmt.setString(3, member.getName());
+			pstmt.setString(3, member.getGender());
+			
+			pstmt.setString(4, member.getBirthyy());
+			
+			pstmt.setString(5, member.getBirthmm());
+			
+			pstmt.setString(6, member.getBirthdd());
 
-			pstmt.setString(4, member.getGender());
+			pstmt.setString(7, member.getMail1());
 
-			pstmt.setString(5, member.getMail1());
+			pstmt.setString(8, member.getMail2());
+			
+			pstmt.setString(9, member.getPhone());
+			
+			pstmt.setString(10, member.getAddress());
 
-			return pstmt.executeUpdate();
+			return 0;
 
-		} catch (Exception e) {
+			
 
-			e.printStackTrace();
-
+		} catch (SQLException | ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-
-		return -1; // DB 오류
+		return -1;
 
 	}
 

@@ -50,7 +50,7 @@
         
         <!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
         <!-- 값(파라미터) 전송은 POST 방식, 전송할 페이지는 JoinPro.jsp -->
-        <form method="post" action="/pro/JoinPro" name="userInfo" 
+        <form method="post" action="${pageContext.request.contextPath}/template/pro/JoinPro" name="userInfo" 
                 onsubmit="return checkValue()">
             <table>
                 <tr>
@@ -85,8 +85,8 @@
                 <tr>
                     <td id="title">성별</td>
                     <td>
-                        <input type="radio" name="gender" value="남" checked>남
-                        <input type="radio" name="gender" value="여" checked>여
+                        <input type="radio" name="gender" value="M">남
+                        <input type="radio" name="gender" value="W">여
                     </td>
                 </tr>
                     
@@ -140,7 +140,7 @@
                 </tr>
             </table>
             <br>
-            <input type="button" value="가입" onclick="location='${pageContext.request.contextPath}/template/pro/JoinPro'"/>
+            <input type="submit" value="가입" />
             <input type="button" value="취소" onclick="location='${pageContext.request.contextPath}/template/login/LoginForm'"/>
         </form>
     </div>

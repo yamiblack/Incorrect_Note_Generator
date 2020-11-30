@@ -119,7 +119,7 @@ h3 {
 					<div class="row">
 						<div class="col">
 							<label for="formGroupExampleInput">제목</label> <input type="text"
-								class="form-control" name="name" id="formGroupExampleInput"
+								class="form-control" name="title" id="formGroupExampleInput"
 								placeholder="제목을 입력해 주세요" required>
 						</div>
 						<div class="col"> 

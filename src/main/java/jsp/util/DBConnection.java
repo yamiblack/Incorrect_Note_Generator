@@ -12,8 +12,8 @@ public class DBConnection
 {
 	// 디비에 접속하고싶으면 여기에 아이디랑 비번 바꿔서 접속하세요
 	String dburl = "jdbc:mysql://211.33.126.173:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC";
-	String user = "아이디";
-	String password = "비번";
+	String user = "woong";
+	String password = "kangjidks2@";
     
     public String getDataUrl() {
     	return this.dburl;

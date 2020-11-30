@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page session="false"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,8 +47,6 @@
 </head>
 
 <body>
-
-
 
 	<jsp:include page="static/hero.jsp"></jsp:include>
 	<jsp:include page="static/nav.jsp"></jsp:include>

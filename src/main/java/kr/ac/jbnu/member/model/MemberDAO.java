@@ -48,7 +48,8 @@ public class MemberDAO {
 
 		try {
 			// 커넥션을 가져온다.
-			conn = DBConnection.getConnection();
+			DBConnection dbc = new DBConnection();
+			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 
 			// 자동 커밋을 false로 한다.
 			conn.setAutoCommit(false);
@@ -77,7 +78,7 @@ public class MemberDAO {
 			// 완료시 커밋
 			conn.commit();
 
-		} catch (ClassNotFoundException | NamingException | SQLException sqle) {
+		} catch (SQLException sqle) {
 			// 오류시 롤백
 			conn.rollback();
 

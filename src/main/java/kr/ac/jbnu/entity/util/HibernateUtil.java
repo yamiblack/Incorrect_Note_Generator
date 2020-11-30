@@ -21,7 +21,7 @@ public class HibernateUtil {
 				DBConnection dbc = new DBConnection();
 				Properties settings = new Properties();
 				settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-				settings.put(Environment.URL, dbc.getDataUrl());
+				settings.put(Environment.URL, "jdbc:mysql://211.33.126.173:3306/ing.note?characterEncoding=UTF-8&serverTimezone=UTC");
 				settings.put(Environment.USER, dbc.getUser());
 				settings.put(Environment.PASS, dbc.getPassword());
 				settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");

@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page contentType="text/html;charset=utf-8"%>
-<%@ page session="false"%>
+<%@ page contentType="text/html;charset=utf-8"
+session = "true"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +37,10 @@
 </head>
 
 <body>
+<%
+/* String userId = ; */
+System.out.println(session.getAttribute("userId"));
+%>
 
    <!-- ======= Header ======= -->
    <header id="header">
@@ -60,9 +64,19 @@
             </ul>
          </nav>
          <!-- #nav-menu-container -->
-
+<%
+if((session.getAttribute("userId") == null)){
+	
+	%>
          <nav class="nav social-nav pull-right d-none d-lg-inline">
             <a href="${pageContext.request.contextPath}/template/login/LoginForm">로그인</a> 
+            <% }else{
+            	%>
+            	<nav class="nav social-nav pull-right d-none d-lg-inline">
+                <a href="${pageContext.request.contextPath}/template/pro/LogoutPro">로그아웃</a>
+            	<%
+            }
+%>
       </div>
    </header>
    <!-- End Header -->

@@ -24,10 +24,10 @@
         function checkValue()
         {
             inputForm = eval("document.loginInfo");
-            if(!inputForm.id.value)
+            if(!inputForm.userId.value)
             {
                 alert("아이디를 입력하세요");    
-                inputForm.id.focus();
+                inputForm.userId.focus();
                 return false;
             }
             if(!inputForm.password.value)

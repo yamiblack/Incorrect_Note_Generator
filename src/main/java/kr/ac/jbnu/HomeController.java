@@ -137,4 +137,9 @@ public class HomeController {
 	   public String LoginPro(Model model) {
 	      return "/template/pro/LoginPro";
 	   }
+	   
+	   @RequestMapping(value = "/template/pro/LogoutPro", method = RequestMethod.GET)
+	   public String LogoutPro(Model model) {
+	      return "/template/pro/LogoutPro";
+	   }
 }

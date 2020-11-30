@@ -3,7 +3,8 @@
    import="kr.ac.jbnu.entity.dao.NoteDao" import="java.util.List"
    import="java.sql.Connection" import="java.sql.ResultSet"
    import="java.sql.Statement" import="java.sql.DriverManager"
-   import="java.util.Random"%>
+   import="java.util.Random"
+   import="jsp.util.*"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,12 +124,9 @@ ul {
                         Statement stmt = null;
                         ResultSet rs = null;
 
-<<<<<<< HEAD
                         DBConnection dbc = new DBConnection();
             			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
-=======
                         conn = DriverManager.getConnection("jdbc:mysql://211.33.126.173/ing?characterEncoding=UTF-8&serverTimezone=UTC", "san", "123123");
->>>>>>> 85aefa69c4034001f45fcbeed0e51df76f2d5634
                         stmt = conn.createStatement();
 
                         int i;

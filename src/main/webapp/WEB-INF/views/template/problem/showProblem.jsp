@@ -1,8 +1,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page contentType="text/html;charset=utf-8"%>
-<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page session="false"
+    import= "java.sql.Connection"
+    import= "java.sql.ResultSet"
+    import= "java.sql.Statement"
+    import= "java.sql.DriverManager"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 <meta charset="utf-8">
@@ -91,7 +96,7 @@ h5 {
 				<div class="d-flex justify-content-between align-items-center">
 					<h2>문제 조회</h2>
 					<ol>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="${pageContext.request.contextPath}/main">Home</a></li>
 						<li>오답노트</li>
 					</ol>
 				</div>
@@ -101,24 +106,47 @@ h5 {
 
 		<!-- 각자 제작한 것 추가해주세요 -->
 		<div class="container">
+		
+		<%
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection conn = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+			
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+			stmt = conn.createStatement();
+			
+			String id = request.getParameter("id");
+			
+			rs = stmt.executeQuery("select * from note where id=" + id + ";");
+			
+			while(rs.next()){
+				%><tr>
+				<td><%=rs.getString("id") + "."%></td>
+				<td><%=rs.getString("content")%></td><br>
+				<td><%=rs.getString("date")%></td>
+				</tr>
+				
+				
+			<br>
 			<h3>오답노트</h3>
-			<h5>연습문제 8번</h5>
+			<h5><% %></h5>
 			<!-- 난이도 -->
 			<div class="show">
 				<h6>난이도</h6>
-				 <img src="${pageContext.request.contextPath}/resources/img/star.png" width="30" height="30">
-				 <img src="${pageContext.request.contextPath}/resources/img/star.png" width="30" height="30">
+				<%
+					for(int i = 0; i < Integer.parseInt(rs.getString("level")); i++){
+						%><img src="${pageContext.request.contextPath}/resources/img/star.png" width="30" height="30"><%
+					}
+				%>
  
-			</div>
-			<!-- 카테고리 -->
-			<div class="show">
-				<h6>카테고리</h6>
-				<h6>데이터통신 10단원</h6>
 			</div>
 			<!-- 문제입력 -->
 			<div class="show">
 				<h6>문제</h6>
-				<h6>7번 3+2는?</h6>
+				<h6><%=rs.getString("content") %></h6>
 			</div>
 			<!-- 사진 추가 -->
 <!-- 			<div class="show">
@@ -128,29 +156,40 @@ h5 {
 			<!-- 보기 -->
 			<div class="show">
 				<h6>보기</h6>
-				<h6>1. 1</h6>
-				<h6>2. 2</h6>
-				<h6>3. 3</h6>
-				<h6>4. 4</h6>
-				<h6>5. 5</h6>
+				<h6>1. <%=rs.getString("choice1") %></h6>
+				<h6>2. <%=rs.getString("choice2") %></h6>
+				<h6>3. <%=rs.getString("choice3") %></h6>
+				<h6>4. <%=rs.getString("choice4") %></h6>
+				<h6>5. <%=rs.getString("choice5") %></h6>
 			</div>
 			
 			<!-- 답 -->
 			<div class="show">
 				<h6>답</h6>
-				<h6>5</h6>
+				<h6><%=rs.getString("answer") %></h6>
 			</div>
 			
 			<!-- 나의 오답 -->
 			<div class="show">
 				<h6>나의 오답</h6>
-				<h6>4</h6>
+				<h6><%=rs.getString("mywrong") %></h6>
 			</div>
 			<!-- 문제 설명 -->
 			<div class="show">
 				<h6>문제 설명</h6>
-				<h6 id="comment">상식임둥</h6>
+				<h6 id="comment"><%=rs.getString("description") %></h6>
 			</div>
+						<% }
+			
+			rs.close();
+			stmt.close();
+			conn.close();
+
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		%>
 			<!-- 뒤로, 등록 버튼 -->
 			<div class="d-flex justify-content-between" style="margine: 3px;">
 				<div class="form-row float-left">

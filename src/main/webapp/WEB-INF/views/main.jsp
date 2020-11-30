@@ -47,6 +47,9 @@
 </head>
 
 <body>
+
+
+
 	<jsp:include page="static/hero.jsp"></jsp:include>
 	<jsp:include page="static/nav.jsp"></jsp:include>
 	<main id="main">

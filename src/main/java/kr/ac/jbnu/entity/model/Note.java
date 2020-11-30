@@ -10,9 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import kr.ac.jbnu.entity.dao.NoteDao;
+
 @Entity
 @Table(name = "Note")
 public class Note {
+	
+	
 	
 	public Note(String name, Integer level, String category, String content, String choice1, String choice2,
 			String choice3, String choice4, String choice5, String answer, String mywrong, String description) {

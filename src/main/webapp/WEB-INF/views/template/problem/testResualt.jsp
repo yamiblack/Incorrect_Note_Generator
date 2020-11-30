@@ -1,8 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page contentType="text/html;charset=utf-8"%>
-<%@ page import="java.util.*"%>
-<%@ page session="false"%>
-
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+   pageEncoding="EUC-KR" import="kr.ac.jbnu.entity.model.*"
+   import="kr.ac.jbnu.entity.dao.NoteDao" import="java.util.List"
+   import="java.util.ArrayList" import="java.sql.Connection"
+   import="java.sql.ResultSet" import="java.sql.Statement"
+   import="java.sql.DriverManager"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -86,11 +87,12 @@ ul {
    height: 250px;
 }
 
-#correct{
-   color:green;
+#correct {
+   color: green;
 }
-#wrong{
-   color:red;
+
+#wrong {
+   color: red;
 }
 </style>
 
@@ -98,65 +100,99 @@ ul {
 <body>
    <jsp:include page="../../static/nav.jsp"></jsp:include>
    <main id="main">
-   <%
-      List<String> ans = new ArrayList<String>();
-      List<String> answersheets = new ArrayList<String>();
-      List<Boolean> resualt = new ArrayList<Boolean>();
-      for (int i = 0; i < 10; i++) {
-         ans.add("1");
-         String param = "choiceview" + (i+1);
-         answersheets.add(request.getParameter(param));
-      }
-      
-      for (int i = 0; i < 10; i++) {
-         System.out.println(i+"="+answersheets.get(i));
-         if(ans.get(i).equals(answersheets.get(i))){
-            resualt.add(true);
-         }
-         else{
-            resualt.add(false);
-         }
-      } 
-   %>
-      <!-- ê°ì ì œì‘í•œ ê²ƒ ì¶”ê°€í•´ì£¼ì„¸ìš” -->
-      <div class="container">
-            <div class="test">
-               <ul>
-                  <%
-                     int i;
-                     for (i = 1; i < 11; i++) {
-                  %>
-                  <li id="problems">
-                     <div class="question"><%=i + ". "%>ì•„ë˜ì˜ ì„ íƒì§€ ì¤‘ì—ì„œ ì–´ë–¤ ê²ƒì´ ë‹¨ì¼ ë¹„íŠ¸
-                        ì˜¤ë¥˜ì— ëŒ€í•´ ê°€ì¥ ì˜ ì„¤ëª…í•˜ì˜€ëŠ”ê°€?
-                     </div>
-                     <div class="answer">
-                        
-                        <input type="radio" value="1" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("1")) { %>checked<%} %> disabled>ë³´ê¸° 1<br> 
-                        <input type="radio" value="2" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("2")) { %>checked<%} %> disabled>ë³´ê¸° 2<br> 
-                        <input type="radio" value="3" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("3")) { %>checked<%} %> disabled>ë³´ê¸° 3<br> 
-                        <input type="radio" value="4" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("4")) { %>checked<%} %> disabled>ë³´ê¸° 4<br> 
-                        <input type="radio" value="5" name=<%="choiceview" + i%> <%if(answersheets.get(i-1).equals("5")) { %>checked<%} %> disabled>ë³´ê¸° 5<br> 
-                     
-                     </div>
-                        <%if(resualt.get(i-1)){ %>
-                           <p id="correct">ì •ë‹µì…ë‹ˆë‹¤.</p>
-                        <%} else{%>
-                           <p id ="wrong">ì˜¤ë‹µì…ë‹ˆë‹¤. ì •ë‹µì€ <%=ans.get(i-1) %> ì…ë‹ˆë‹¤.</p>
-                        <%} %>                     
-                  </li>
-                  <%
-                     }
-                     if (i % 2 == 0) {
-                  %>
-                  <li id="problems"></li>
-                  <%
-                     }
-                  %>
+      <section class="breadcrumbs">
+         <div class="container">
 
-               </ul>               
+            <div class="d-flex justify-content-between align-items-center">
+               <h2>¿À´ä³ëÆ®</h2>
+               <ol>
+                  <li><a href="${pageContext.request.contextPath}/main">Home</a></li>
+                  <li>¿À´ä³ëÆ®</li>
+               </ol>
             </div>
-         
+         </div>
+      </section>
+      <!-- End Breadcrumbs Section -->
+      <!-- °¢ÀÚ Á¦ÀÛÇÑ °Í Ãß°¡ÇØÁÖ¼¼¿ä -->
+      <div class="container">
+         <div class="test">
+            <ul>
+               <%
+                  List<String> answersheets = new ArrayList<String>();
+                  String tmp = request.getParameter("choiceview0");
+                  String pnum[] = new String[Integer.parseInt(tmp.split("_")[1])];
+                  for (int i = 0; i < Integer.parseInt(tmp.split("_")[1]); i++) {
+                     pnum[i] = request.getParameter("choiceview" + i).split("_")[0];
+                     answersheets.add(request.getParameter("choiceview" + i).split("_")[2]);
+                  }
+                  try {
+                     Class.forName("com.mysql.cj.jdbc.Driver");
+
+                     Connection conn = null;
+                     Statement stmt = null;
+                     ResultSet rs = null;
+
+                     conn = DriverManager.getConnection(
+                           "jdbc:mysql://localhost:3306/ing?characterEncoding=UTF-8&serverTimezone=UTC", "root", "1234");
+                     stmt = conn.createStatement();
+
+                     int i;
+                     for (i = 0; i < pnum.length; i++) {
+                        rs = stmt.executeQuery("select * from note where id=" + pnum[i] + ";");
+                        while (rs.next()) {
+               %>
+               <li id="problems">
+                  <div class="question"><%=(i + 1) + ". " + rs.getString("content")%>
+                  </div>
+                  <div class="answer">
+                     <input type="radio" value="1" name=<%="choiceview" + i%>
+                        <%if (answersheets.get(i).equals("1")) {%> checked <%}%>
+                        disabled><%=rs.getString("choice1") %><br> <input type="radio" value="2"
+                        name=<%="choiceview" + i%>
+                        <%if (answersheets.get(i).equals("2")) {%> checked <%}%>
+                        disabled><%=rs.getString("choice2") %><br> <input type="radio" value="3"
+                        name=<%="choiceview" + i%>
+                        <%if (answersheets.get(i).equals("3")) {%> checked <%}%>
+                        disabled><%=rs.getString("choice3") %><br> <input type="radio" value="4"
+                        name=<%="choiceview" + i%>
+                        <%if (answersheets.get(i).equals("4")) {%> checked <%}%>
+                        disabled><%=rs.getString("choice4") %><br> <input type="radio" value="5"
+                        name=<%="choiceview" + i%>
+                        <%if (answersheets.get(i).equals("5")) {%> checked <%}%>
+                        disabled><%=rs.getString("choice5") %><br>
+                  </div> <%
+    if (rs.getString("answer").equals(answersheets.get(i))) {
+ %>
+                  <p id="correct">Á¤´äÀÔ´Ï´Ù.</p> <%
+    } else {
+ %>
+                  <p id="wrong">
+                     ¿À´äÀÔ´Ï´Ù. Á¤´äÀº
+                     <%=rs.getString("answer")%>ÀÔ´Ï´Ù.<br> ÇØ¼³:<br>
+                     <%=rs.getString("description")%>
+                  </p> <%
+    }
+ %>
+               </li>
+               <%
+                  }
+               %>
+               <%
+                  }
+                     if (i % 2 != 0) {
+               %>
+               <li id="problems"></li>
+               <%
+                  }
+                     rs.close();
+                     stmt.close();
+                     conn.close();
+                  } catch (ClassNotFoundException e) { // TODO Auto-generated catch block
+                     e.printStackTrace();
+                  }
+               %>
+            </ul>
+         </div>
          <div class="pageend ">
             <ul class="pagination justify-content-center">
                <li class="page-item"><a class="page-link" href="#">Previous</a></li>

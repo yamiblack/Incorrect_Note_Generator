@@ -15,7 +15,6 @@
 </head>
 <body>
 
-	
 	<jsp:include page="../static/nav.jsp"></jsp:include>
 	
 	<main id="main">
@@ -78,7 +77,7 @@
 						while(rs.next()){
 							%><tr>
 							<td><%=rs.getString("id")%></td>
-							<td><a href="${pageContext.request.contextPath}/template/problem/showProblem"> <%=rs.getString("content")%> </a></td>
+							<td><a href="${pageContext.request.contextPath}/template/problem/showProblem?id=<%=rs.getString("id")%>"> <%=rs.getString("content")%> </a></td>
 							<td><%=rs.getString("date")%></td>
 						<% }
 						
@@ -126,13 +125,13 @@
 	
 	</script> -->
 
-	<script>
+<!-- 	<script>
 	function click_add(){
 		var url = "${pageContext.request.contextPath}/template/problem/problemRegist";
 		var name = "regist";
 		/* var option = "width = 600, height = 600 left = 100,top=50,location=no"; */
 		window.open(url,name,option)
 	}
-	</script>
+	</script> -->
 </body>
 </html>

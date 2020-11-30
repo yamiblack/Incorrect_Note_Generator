@@ -97,7 +97,7 @@ h3 {
 				<div class="d-flex justify-content-between align-items-center">
 					<h2>문제 풀기</h2>
 					<ol>
-						<li><a href="index.html">Home</a></li>
+						<li><a href="${pageContext.request.contextPath}/main">Home</a></li>
 						<li>오답노트</li>
 					</ol>
 				</div>
@@ -110,7 +110,7 @@ h3 {
 
 
 		<div class="container">
-			<form name="regist" action="save_do" method="GET">
+			<form name="regist" action="save_do" method="get">
 				<!-- 문제 등록 폼 -->
 				<h3>객관식 문제 등록</h3>
 				<h4>문제 정보</h4>
@@ -119,7 +119,7 @@ h3 {
 					<div class="row">
 						<div class="col">
 							<label for="formGroupExampleInput">제목</label> <input type="text"
-								class="form-control" name="title" id="formGroupExampleInput"
+								class="form-control" name="name" id="formGroupExampleInput"
 								placeholder="제목을 입력해 주세요" required>
 						</div>
 						<div class="col"> 
@@ -171,7 +171,7 @@ h3 {
 				<!-- 문제입력 -->
 				<div class="form-group">
 					<label for="formGroupExampleInput">문제</label> <input type="text"
-						name-"content" class="form-control" id="formGroupExampleInput"
+						name="content" class="form-control" id="formGroupExampleInput"
 						placeholder="문제를 입력해 주세요." required>
 				</div>
 				<!-- 사진 추가 -->

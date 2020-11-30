@@ -9,21 +9,21 @@
 <%
     request.setCharacterEncoding("utf-8");
 	
-    String title = request.getParameter("name");
-    Integer level = 5;
-    String category = "category";
-    String content = request.getParameter("문제");
-    String choice1 = request.getParameter("1번");
-    String choice2 = request.getParameter("2번");
-    String choice3 = request.getParameter("3번");
-    String choice4 = request.getParameter("4번");
-    String choice5 = request.getParameter("5번");
-    String answer = request.getParameter("답");
-    String wrongAnswer = request.getParameter("오답");
-    String description = request.getParameter("설명");
+    String title = request.getParameter("title");
+    Integer level = Integer.parseInt(request.getParameter("star"));
+    /* String category = request.getParameter("content"); */
+    String content = request.getParameter("content");
+    String choice1 = request.getParameter("choice1");
+    String choice2 = request.getParameter("choice2");
+    String choice3 = request.getParameter("choice3");
+    String choice4 = request.getParameter("choice4");
+    String choice5 = request.getParameter("choice5");
+    String answer = request.getParameter("answer");
+    String wrongAnswer = request.getParameter("wronganswer");
+    String description = request.getParameter("description");
     
     NoteDao dao = new NoteDao();
-    Note note = new Note(title, level, category, content, choice1, choice2, choice3, choice4, choice5, answer, wrongAnswer, description);
+    Note note = new Note(title, level, "", content, choice1, choice2, choice3, choice4, choice5, answer, wrongAnswer, description);
     dao.saveNote(note);
     
 %>

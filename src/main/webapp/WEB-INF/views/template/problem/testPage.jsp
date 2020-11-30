@@ -3,8 +3,7 @@
    import="kr.ac.jbnu.entity.dao.NoteDao" import="java.util.List"
    import="java.sql.Connection" import="java.sql.ResultSet"
    import="java.sql.Statement" import="java.sql.DriverManager"
-   import="java.util.Random"
-   import="jsp.util.*"%>
+   import="java.util.Random" import="jsp.util.DBConnection"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -119,15 +118,14 @@ ul {
                      String[] pnum = request.getParameterValues("pnum");
                      try {
                         Class.forName("com.mysql.cj.jdbc.Driver");
-
-                        Connection conn = null;
-                        Statement stmt = null;
-                        ResultSet rs = null;
-
-                        DBConnection dbc = new DBConnection();
-            			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
-                        conn = DriverManager.getConnection("jdbc:mysql://211.33.126.173/ing?characterEncoding=UTF-8&serverTimezone=UTC", "san", "123123");
-                        stmt = conn.createStatement();
+                   
+                   Connection conn = null;
+                   Statement stmt = null;
+                   ResultSet rs = null;
+                   
+                   DBConnection dbc = new DBConnection();
+                   conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
+                   stmt = conn.createStatement();
 
                         int i;
                         for (i = 0; i < pnum.length; i++) {

@@ -3,7 +3,7 @@
    import="kr.ac.jbnu.entity.dao.NoteDao" import="java.util.List"
    import="java.util.ArrayList" import="java.sql.Connection"
    import="java.sql.ResultSet" import="java.sql.Statement"
-   import="java.sql.DriverManager" import="jsp.util.*"%>
+   import="java.sql.DriverManager" import="jsp.util.DBConnection"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -123,30 +123,28 @@ ul {
                   String pnum[] = new String[Integer.parseInt(tmp.split("_")[1])];
                   String vougi[] = new String[Integer.parseInt(tmp.split("_")[1])];
                   String ans[] = new String[Integer.parseInt(tmp.split("_")[1])];
-                  System.out.println(tmp);
                   for (int i = 0; i < Integer.parseInt(tmp.split("_")[1]); i++) {
+                    String tp = request.getParameter("choiceview" + i);
+                    
                      pnum[i] = request.getParameter("choiceview" + i).split("_")[0];
                      answersheets.add(request.getParameter("choiceview" + i).split("_")[2]);
                      vougi[i] = request.getParameter("choiceview" + i).split("_")[3];
                      for(int k = 0; k<5; k++){
                         if(vougi[i].charAt(k)==(answersheets.get(i).charAt(0))){
                            ans[i] = Integer.toString(k+1);
-                           System.out.println(ans[i] +" "+ vougi[i].charAt(k) + " " + answersheets.get(i).charAt(0) );
                         }
                      }
                   }
                   try {
                      Class.forName("com.mysql.cj.jdbc.Driver");
-
-                     Connection conn = null;
-                     Statement stmt = null;
-                     ResultSet rs = null;
-
-                     DBConnection dbc = new DBConnection();
-         			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
-                     conn = DriverManager.getConnection(
-                           "jdbc:mysql://211.33.126.173/ing?characterEncoding=UTF-8&serverTimezone=UTC", "san", "123123");
-                     stmt = conn.createStatement();
+                  
+                  Connection conn = null;
+                  Statement stmt = null;
+                  ResultSet rs = null;
+                  
+                  DBConnection dbc = new DBConnection();
+                  conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
+                  stmt = conn.createStatement();
 
                      int i;
                      for (i = 0; i < pnum.length; i++) {
@@ -166,11 +164,18 @@ ul {
                         disabled><%=rs.getString("choice" + vougi[i].charAt(k - 1))%><br>                        
                      <%
                         }
+                        String t = "";
+                        for(int k = 0; k<5; k++){
+                           if(vougi[i].charAt(k)==rs.getString("answer").charAt(0)){
+                              t+=(k+1);
+                           }
+          
+                        }
                      %>
 
                   </div> <%
-    if (rs.getString("answer").equals(ans[i])) {
- %>
+    if (t.equals(answersheets.get(i))) { 
+ %> 
                   <p id="correct">정답입니다.</p> <%
     } else {
  %>

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.sql.*"
 	import="kr.ac.jbnu.entity.dao.*"
-	import="kr.ac.jbnu.entity.model.*"%>
+	import="kr.ac.jbnu.entity.model.*"
+	session = "true"%>
 
 
 <!DOCTYPE html>
@@ -20,9 +21,10 @@
 	String answer = request.getParameter("answer");
 	String wrongAnswer = request.getParameter("wronganswer");
 	String description = request.getParameter("description");
+	String userid = (String)session.getAttribute("userId");
     
     NoteDao dao = new NoteDao();
-    Note note = new Note(title, level, " ", content, choice1, choice2, choice3, choice4, choice5, answer, wrongAnswer, description);
+    Note note = new Note(title, level, " ", content, choice1, choice2, choice3, choice4, choice5, answer, wrongAnswer, description, userid);
     dao.saveNote(note);
     
 %>

@@ -2,19 +2,7 @@
     pageEncoding="UTF-8"
     import="java.sql.*"
     import="jsp.util.*"%>
-<script>
 
-/* 퀵메뉴 창닫기 기능 */ 
-
-function WinClose()
-
- {
-
-   window.open('','_self').close();     
-
-}
-
-</script>
 <%
 	request.setCharacterEncoding("utf-8");
 	
@@ -22,7 +10,7 @@ function WinClose()
 	String startDate = request.getParameter("startDate");
 	String endDate = request.getParameter("endDate");
 	String memo = request.getParameter("memo");
-	System.out.print(subject);
+	
 	try{
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		DBConnection dbc = new DBConnection();
@@ -49,14 +37,15 @@ function WinClose()
 		out.println(e);
 	}
 %>
+<script>
+window.open('','_self').close();     
+</script>
 <!DOCTYPE html> 
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<a href="javascript:WinClose();">
-	</a>
+<body>	
 </body>
 </html>

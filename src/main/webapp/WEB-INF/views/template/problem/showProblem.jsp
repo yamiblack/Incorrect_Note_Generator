@@ -126,11 +126,10 @@ h5 {
 			
 			while(rs.next()){
 				%><tr>
-				<td><%=rs.getString("id") + "."%></td>
-				<td><%=rs.getString("content")%></td><br>
-				<td><%=rs.getString("date")%></td>
+				<td><h2 style="display:inline"><%=rs.getString("id") + "."%></td>
+				<td><%=rs.getString("name")%></h2></td><br>
+				<td><br>등록날짜: <%=rs.getString("date")%></td><br>
 				</tr>
-				
 				
 			<br>
 			<h3>오답노트</h3>

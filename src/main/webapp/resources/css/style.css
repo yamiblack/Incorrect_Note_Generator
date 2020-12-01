@@ -499,6 +499,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   border-radius: 50%;
   padding: 40px 25px 0 25px;
   position: relative;
+  margin-left: 280px;
 }
 
 .stats-col .circle .stats-no {

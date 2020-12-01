@@ -1,6 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+	pageEncoding="utf-8"
+	import= "java.sql.Connection"
+    import= "java.sql.ResultSet"
+    import= "java.sql.Statement"
+    import= "java.sql.DriverManager"
+    import= "jsp.util.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +57,18 @@
 	<jsp:include page="static/nav.jsp"></jsp:include>
 	<main id="main">
 		<main id="main">
-
+<%
+	Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+	DBConnection dbc = new DBConnection();
+	Connection conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
+	Statement st = conn.createStatement();
+	ResultSet rs = null;
+    try {
+   
+    String strNoteQuery;
+    String strUserQuery;
+    String Countrow;
+    %>
 			<!-- ======= About Section ======= -->
 			<section class="about" id="about">
 
@@ -64,21 +80,39 @@
 					<div class="row stats-row">
 						<div class="stats-col text-center col-md-4 col-sm-4">
 							<div class="circle">
-								<span class="stats-no" data-toggle="counter-up">200</span> 오답노트</br>문제
+								<span class="stats-no" data-toggle="counter-up"><%
+    
+								    strNoteQuery = "SELECT COUNT(*) FROM note";
+								    rs = st.executeQuery(strNoteQuery);
+								    Countrow = "";
+								    while (rs.next()) {
+								       Countrow = rs.getString(1);
+								       out.println(Countrow);
+								    }
+								
+								 %></span> 오답노트</br>문제
 								수
 							</div>
 						</div>
 
 						<div class="stats-col text-center col-md-4 col-sm-4">
 							<div class="circle">
-								<span class="stats-no" data-toggle="counter-up">79</span> 해결한</br>오답수
-							</div>
-						</div>
-
-						<div class="stats-col text-center col-md-4 col-sm-4">
-							<div class="circle">
-								<span class="stats-no" data-toggle="counter-up">100</span> 미해결</br>오답
-								수
+								<span class="stats-no" data-toggle="counter-up"><%
+                              
+                              strUserQuery = "SELECT COUNT(*) FROM user";
+                              rs = st.executeQuery(strUserQuery);
+                              Countrow = "";
+                              while (rs.next()) {
+                                 Countrow = rs.getString(1);
+                                 out.println(Countrow);
+                              }
+                           } catch (Exception e) {
+                              e.printStackTrace();
+                           }
+							rs.close();
+							st.close();
+							conn.close();
+                           %></span> ING</br>회원
 							</div>
 						</div>
 					</div>

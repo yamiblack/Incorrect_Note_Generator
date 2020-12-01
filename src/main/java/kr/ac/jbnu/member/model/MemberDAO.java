@@ -104,11 +104,12 @@ public class MemberDAO {
 		
 		String SQL;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			DBConnection dbc = new DBConnection();
 			conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
-			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			SQL = "INSERT INTO USER VALUES (?,?,?,?,?,?,?,?,?,?)";
+			
+			SQL = "INSERT INTO USER VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(SQL);
 			
 			pstmt.setString(1, member.getId());
@@ -130,6 +131,8 @@ public class MemberDAO {
 			pstmt.setString(9, member.getPhone());
 			
 			pstmt.setString(10, member.getAddress());
+			
+			pstmt.setString(11, member.getName());
 
 			return pstmt.executeUpdate();
 

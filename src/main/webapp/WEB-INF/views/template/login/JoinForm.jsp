@@ -39,9 +39,16 @@
         }
     </script>
     
+    <script>
+    	function checkId(){
+    		
+    	}
+    </script>
+    
 </head>
 <body>
 <jsp:include page="../../static/nav.jsp"></jsp:include>
+    
     <div id="wrap">
         <br><br>
         <b><font size="6" color="gray">회원가입</font></b>

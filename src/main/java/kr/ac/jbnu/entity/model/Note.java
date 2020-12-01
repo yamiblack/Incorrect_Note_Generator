@@ -16,10 +16,8 @@ import kr.ac.jbnu.entity.dao.NoteDao;
 @Table(name = "Note")
 public class Note {
 	
-	
-	
 	public Note(String name, Integer level, String category, String content, String choice1, String choice2,
-			String choice3, String choice4, String choice5, String answer, String mywrong, String description) {
+			String choice3, String choice4, String choice5, String answer, String mywrong, String description, String userid) {
 		this.name = name;
 		this.level = level;
 		this.category = category;
@@ -36,6 +34,8 @@ public class Note {
 		SimpleDateFormat dataFormat = new SimpleDateFormat("yyyy.MM.dd");
 		String now = dataFormat.format(new Date());
 		this.date = now;
+		
+		this.userid = userid;
 	}
 
 	@Id
@@ -82,6 +82,17 @@ public class Note {
 	@Column(name = "date")
 	private String date;
 	
+	@Column(name = "userid")
+	private String userid;
+	
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
 	public long getId() {
 		return id;
 	}

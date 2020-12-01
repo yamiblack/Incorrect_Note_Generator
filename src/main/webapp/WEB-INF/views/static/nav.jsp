@@ -39,7 +39,7 @@ session = "true"%>
 <body>
 <%
 /* String userId = ; */
-System.out.println(session.getAttribute("userId"));
+
 %>
 
    <!-- ======= Header ======= -->

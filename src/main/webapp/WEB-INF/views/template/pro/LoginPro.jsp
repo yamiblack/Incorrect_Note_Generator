@@ -1,7 +1,6 @@
 <%@page import="org.hibernate.internal.build.AllowSysOut"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR" import="kr.ac.jbnu.member.model.*"
-	session = "true"%>
+	pageEncoding="EUC-KR" import="kr.ac.jbnu.member.model.*" session="true"%>
 
 <%-- 자바빈 클래스 import --%>
 <%@ page import="kr.ac.jbnu.member.model.MemberBean"%>
@@ -14,7 +13,6 @@
 
 <%
 	String id = request.getParameter("userId"); /* 로그인 페이지에서 아이디, 비밀번호 정보를 받아온다 */
-	System.out.println(id);
 String password = request.getParameter("password");
 
 Connection conn = null;
@@ -22,7 +20,8 @@ PreparedStatement pstmt = null;
 ResultSet rs = null;/*디비 값 불러올떄  */
 
 try {/*디비와 연결한다.  */
-	Context init = new InitialContext();
+	
+	Class.forName("com.mysql.jdbc.Driver");
 	DBConnection dbc = new DBConnection();
 	conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 
@@ -56,6 +55,6 @@ try {/*디비와 연결한다.  */
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="../../main.jsp"/>
+	<jsp:forward page="../../main.jsp" />
 </body>
 </html>

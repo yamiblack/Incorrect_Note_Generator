@@ -70,7 +70,6 @@ public class HomeController {
 	// template/problem
 	@RequestMapping(value = "/template/problem/problemRegist", method = RequestMethod.GET)
 	public String problemRegist(Model model) {
-		
 		return "/template/problem/problemRegist";
 	}
 
@@ -106,6 +105,16 @@ public class HomeController {
 	@RequestMapping(value = "/list/notelist", method = RequestMethod.GET)
 	public String notelistPage(Model model) {
 		return "/list/notelist";
+	}
+	
+	@RequestMapping(value = "/list/delete", method = RequestMethod.GET)
+	public String delete(Model model) {
+		return "/list/delete";
+	}
+	
+	@RequestMapping(value = "/list/delete_do", method = RequestMethod.GET)
+	public String delete_do(Model model) {
+		return "/list/delete_do";
 	}
 	
 	@RequestMapping(value = "/list/select", method = RequestMethod.GET)

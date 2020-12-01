@@ -3,7 +3,8 @@
 	import="kr.ac.jbnu.entity.dao.NoteDao" import="java.util.List"
 	import="java.sql.Connection" import="java.sql.ResultSet"
 	import="java.sql.Statement" import="java.sql.DriverManager"
-	import="jsp.util.*"%>
+	import="jsp.util.*"
+	%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,18 +38,19 @@
 				<div class="form-row float-right">
 					<!-- Search form -->
 					<form class="form-inline">
-						<img class="gadgets-img hidden-md-down" width=25px, height=25px
+						<!-- <i class="fas fa-search" aria-hidden="true"></i> --> <img
+							class="gadgets-img hidden-md-down" width=25px, height=25px
 							src="${pageContext.request.contextPath}/resources/img/search.png">
-						<input class="form-control form-control-sm ml-3 w-75" type="text"
-							name="search" placeholder="Search" aria-label="Search"
-							onkeypress="JavaScript:press(this.form)">
+						<input
+						class="form-control form-control-sm ml-3 w-75" type="text" name="search"
+						placeholder="Search" aria-label="Search" onkeypress="JavaScript:press(this.form)">
 					</form>
 				</div>
 			</div>
 			<!-- table -->
 			<div>
 				<form name="problems"
-					action="${pageContext.request.contextPath}/template/problem/testPage"
+					action="${pageContext.request.contextPath}/list/delete_do"
 					method="get">
 					<table class="table table-bordered">
 						<thead>
@@ -68,12 +70,12 @@
 								Statement stmt = null;
 								ResultSet rs = null;
 
+								String loginid = (String)session.getAttribute("userId");
+								
 								DBConnection dbc = new DBConnection();
 								conn = DriverManager.getConnection(dbc.getDataUrl(), dbc.getUser(), dbc.getPassword());
 								stmt = conn.createStatement();
 
-								String loginid = (String)session.getAttribute("userId");
-								
 								String listSearch;
 								String searchsql;
 								listSearch = (String)request.getParameter("search");
@@ -107,8 +109,8 @@
 							
 						</tbody>
 					</table>
-					<input type="submit" class="btn bnt-small form-control"
-						value="선택완료">
+					 <input type="submit" class="btn bnt-small form-control"
+                  value="삭제하기">
 				</form>
 			</div>
 		</div>
@@ -127,9 +129,7 @@
 				//formname에 사용자가 지정한 form의 name입력 
 			}
 		}
-	</script>
-
-	<script>
+		
 		function check(){
 			if (problems.checkAll.checked){
 				check_all();
@@ -137,7 +137,7 @@
 				uncheck_all();
 			}
 		}
-	
+
 		function check_all() {
 			for (i = 0; i < problems.pnum.length; i++) {
 				problems.pnum[i].checked = true;
